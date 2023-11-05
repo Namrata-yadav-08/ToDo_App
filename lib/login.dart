@@ -25,7 +25,7 @@ class _LoginState extends State<Login> {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
-              Padding(padding: EdgeInsets.only(top: 10)),
+              const Padding(padding: EdgeInsets.only(top: 10)),
               buildcircl(context),
               _header(context),
               _inputField(context),
@@ -47,8 +47,8 @@ class _LoginState extends State<Login> {
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        iconButton(context, Icon(FontAwesomeIcons.google), () {}, Colors.red),
-        iconButton(context, Icon(FontAwesomeIcons.apple), () {}, Colors.black),
+        iconButton(context, const Icon(FontAwesomeIcons.google), () {}, Colors.red),
+        iconButton(context, const Icon(FontAwesomeIcons.apple), () {}, Colors.black),
       ],
     );
   }
@@ -123,7 +123,7 @@ class _LoginState extends State<Login> {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.stretch,
       children: [
-        // Padding(padding: EdgeInsets.all(19)),
+        
         Container(
           margin: const EdgeInsets.all(15),
           child: TextField(
@@ -134,13 +134,12 @@ class _LoginState extends State<Login> {
             style: const TextStyle(color: Colors.black),
 
             decoration: InputDecoration(
-              fillColor: Color.fromRGBO(196, 196, 196, 0.2),
+              fillColor: const Color.fromRGBO(196, 196, 196, 0.2),
               filled: true,
               hintText: "Enter Your Username",
               hintStyle: const TextStyle(color: Colors.grey),
-              suffixIcon: Icon(Icons.mail),
-              // fillColor: Color.fromRGBO(151, 151, 151, 1),
-              // filled: true,
+              suffixIcon: const Icon(Icons.mail),
+
               focusedBorder: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(10),
 
@@ -168,11 +167,11 @@ class _LoginState extends State<Login> {
             // enabled: false,
             style: const TextStyle(color: Colors.black),
             decoration: InputDecoration(
-                fillColor: Color.fromRGBO(196, 196, 196, 0.2),
+                fillColor: const Color.fromRGBO(196, 196, 196, 0.2),
                 filled: true,
                 hintText: "Password",
                 hintStyle: const TextStyle(color: Colors.grey),
-                suffixIcon: Icon(Icons.lock),
+                suffixIcon: const Icon(Icons.lock),
                 focusedBorder: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(10),
                   // borderSide: const BorderSide(color: Colors.blue),
@@ -218,7 +217,7 @@ class _LoginState extends State<Login> {
   _forgotPassword(context) {
     return TextButton(
         onPressed: () {},
-        child: CustomText(
+        child: const CustomText(
           text: "Forget Password ?",
           fontStyle: null,
           color: Colors.red,
@@ -323,7 +322,7 @@ class _LoginState extends State<Login> {
   //   );
   // }
   Widget buildcircl(BuildContext context) {
-    return CircleAvatar(
+    return const CircleAvatar(
       radius: 70,
     );
   }

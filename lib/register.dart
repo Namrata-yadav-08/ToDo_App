@@ -29,27 +29,26 @@ class _RegisterState extends State<Register> {
                 height: 20,
               ),
               _header(context),
-              const SizedBox(
-                height: 20,
-              ),
+              // const SizedBox(
+              //   height: 20,
+              // ),
               _inputField(context),
-              const SizedBox(
-                height: 10,
-              ),
+              // const SizedBox(
+              //   height: 10,
+              // ),
               // _forgotPassword(context),
               const Text(
                 "___________________________or_____________________________",
                 style: TextStyle(color: Colors.grey),
               ),
-              const SizedBox(
-                height: 5,
-              ),
+              // const SizedBox(
+              //   height: 5,
+              // ),
               outlinebuttn(context),
 
-              const SizedBox(
-                height: 20,
-              ),
-              _signup(context),
+              // const SizedBox(
+              //   height: 20,
+              // ),
             ],
           ),
         ),
@@ -66,7 +65,9 @@ class _RegisterState extends State<Register> {
             actions: <Widget>[
               TextButton(
                   onPressed: () {
-                    Navigator.of(context).pop();
+                    Navigator.push(context,
+                        MaterialPageRoute(builder: (context) => const Login()));
+                    // Navigator.of(context).pop();
                   },
                   child: const Text("OK")),
             ],
