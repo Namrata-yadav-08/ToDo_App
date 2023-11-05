@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:todoapp/login.dart';
+import 'package:todoapp/widgets/text.dart';
 
 class Register extends StatefulWidget {
   const Register({super.key});
@@ -12,12 +14,13 @@ class _RegisterState extends State<Register> {
   var emailtext = TextEditingController();
   var password = TextEditingController();
   var confirmpass = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.black,
-      body: SingleChildScrollView(
-        child: Container(
+      backgroundColor: Colors.white,
+      body: ListView(children: [
+        Container(
           // margin: EdgeInsets.all(24),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -50,8 +53,25 @@ class _RegisterState extends State<Register> {
             ],
           ),
         ),
-      ),
+      ]),
     );
+  }
+
+  void showdialog(BuildContext context) {
+    showDialog(
+        context: context,
+        builder: (BuildContext context) {
+          return AlertDialog(
+            title: const Text("You are registered"),
+            actions: <Widget>[
+              TextButton(
+                  onPressed: () {
+                    Navigator.of(context).pop();
+                  },
+                  child: const Text("OK")),
+            ],
+          );
+        });
   }
 
   _header(context) {
@@ -59,12 +79,13 @@ class _RegisterState extends State<Register> {
       // mainAxisAlignment: MainAxisAlignment.start,
       children: [
         // Positioned(child: ),
-        Text(
-          "REGISTER",
-          textAlign: TextAlign.right,
-          style: TextStyle(
-              fontSize: 40, color: Colors.white, fontWeight: FontWeight.bold),
-        ),
+        CustomText(
+          text: "Register",
+          fontStyle: null,
+          color: Colors.black,
+          fontSize: 40,
+          fontweigth: FontWeight.bold,
+        )
       ],
     );
   }
@@ -77,7 +98,7 @@ class _RegisterState extends State<Register> {
           margin: const EdgeInsets.only(left: 20),
           child: const Text(
             "Username",
-            style: TextStyle(color: Colors.white),
+            style: TextStyle(color: Colors.black),
           ),
         ),
         // Padding(padding: EdgeInsets.all(19)),
@@ -88,16 +109,18 @@ class _RegisterState extends State<Register> {
             controller: emailtext,
             // enabled: false,
 
-            style: const TextStyle(color: Colors.white),
+            style: const TextStyle(color: Colors.black),
 
             decoration: InputDecoration(
+              fillColor: Color.fromRGBO(196, 196, 196, 0.2),
+              filled: true,
               hintText: "Enter Your Username",
               hintStyle: const TextStyle(color: Colors.grey),
               // fillColor: Color.fromRGBO(151, 151, 151, 1),
               // filled: true,
               focusedBorder: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(10),
-                borderSide: const BorderSide(color: Colors.blue),
+                // borderSide: const BorderSide(color: Colors.blue),
               ),
               enabledBorder: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(10),
@@ -115,7 +138,7 @@ class _RegisterState extends State<Register> {
           margin: const EdgeInsets.only(left: 20),
           child: const Text(
             "Password",
-            style: TextStyle(color: Colors.white),
+            style: TextStyle(color: Colors.black),
           ),
         ),
         Container(
@@ -124,13 +147,15 @@ class _RegisterState extends State<Register> {
             controller: password,
             obscureText: true,
             // enabled: false,
-            style: const TextStyle(color: Colors.white),
+            style: const TextStyle(color: Colors.black),
             decoration: InputDecoration(
+                fillColor: Color.fromRGBO(196, 196, 196, 0.2),
+                filled: true,
                 hintText: "Password",
                 hintStyle: const TextStyle(color: Colors.grey),
                 focusedBorder: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(10),
-                  borderSide: const BorderSide(color: Colors.blue),
+                  // borderSide: const BorderSide(color: Colors.blue),
                 ),
                 enabledBorder: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(10),
@@ -145,8 +170,8 @@ class _RegisterState extends State<Register> {
         Container(
           margin: const EdgeInsets.only(left: 20),
           child: const Text(
-            "Password",
-            style: TextStyle(color: Colors.white),
+            "Confirm Password",
+            style: TextStyle(color: Colors.black),
           ),
         ),
         Container(
@@ -155,13 +180,15 @@ class _RegisterState extends State<Register> {
             controller: confirmpass,
             obscureText: true,
             // enabled: false,
-            style: const TextStyle(color: Colors.white),
+            style: const TextStyle(color: Colors.black),
             decoration: InputDecoration(
+                fillColor: Color.fromRGBO(196, 196, 196, 0.2),
+                filled: true,
                 hintText: "Confirm Password",
                 hintStyle: const TextStyle(color: Colors.grey),
                 focusedBorder: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(10),
-                  borderSide: const BorderSide(color: Colors.blue),
+                  // borderSide: const BorderSide(color: Colors.blue),
                 ),
                 enabledBorder: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(10),
@@ -180,9 +207,12 @@ class _RegisterState extends State<Register> {
             onPressed: () {
               String uname = emailtext.text.toString();
               String passwrd = password.text.toString();
+              showdialog(context);
+
               // print(uname);
-              // Navigator.push(
-              //     context, MaterialPageRoute(builder: (context) => MainPage()));
+              Navigator.push(context,
+                  MaterialPageRoute(builder: (context) => const Login()));
+              Navigator.of(context).pop();
             },
             style: ElevatedButton.styleFrom(
               // shape: const StadiumBorder(),
@@ -193,7 +223,7 @@ class _RegisterState extends State<Register> {
             ),
             child: const Text(
               "Register",
-              style: TextStyle(fontSize: 20, color: Colors.white),
+              style: TextStyle(fontSize: 20, color: Colors.black),
             ),
           ),
         ),
@@ -231,7 +261,7 @@ class _RegisterState extends State<Register> {
                 // side: BorderSide(color: Colors.blue)
               )),
               side: MaterialStateProperty.all<BorderSide>(
-                BorderSide(color: Colors.blue),
+                const BorderSide(color: Colors.blue),
               ),
             ),
             child: const Row(
@@ -247,7 +277,7 @@ class _RegisterState extends State<Register> {
                 ),
                 Text(
                   "Continue With Google",
-                  style: TextStyle(color: Colors.white),
+                  style: TextStyle(color: Colors.black),
                 ),
               ],
             ),
@@ -267,7 +297,7 @@ class _RegisterState extends State<Register> {
                 // side: BorderSide(color: Colors.blue)
               )),
               side: MaterialStateProperty.all<BorderSide>(
-                BorderSide(color: Colors.blue),
+                const BorderSide(color: Colors.blue),
               ),
             ),
             child: const Row(
@@ -283,7 +313,7 @@ class _RegisterState extends State<Register> {
                 ),
                 Text(
                   "Continue With Apple",
-                  style: TextStyle(color: Colors.white),
+                  style: TextStyle(color: Colors.black),
                 ),
               ],
             ),

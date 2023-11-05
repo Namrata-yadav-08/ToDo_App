@@ -2,6 +2,8 @@ import 'dart:ui';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:flutter/material.dart';
 import 'package:todoapp/register.dart';
+import 'package:todoapp/widgets/const.dart';
+import 'package:todoapp/widgets/text.dart';
 
 class Login extends StatefulWidget {
   const Login({super.key});
@@ -16,42 +18,83 @@ class _LoginState extends State<Login> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.black,
-      body: SingleChildScrollView(
-        child: Container(
+      // backgroundColor: Colors.black,
+      body: ListView(children: [
+        Container(
           // margin: EdgeInsets.all(24),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
-              const SizedBox(
-                height: 10,
-              ),
+              Padding(padding: EdgeInsets.only(top: 10)),
+              buildcircl(context),
               _header(context),
-              const SizedBox(
-                height: 10,
-              ),
               _inputField(context),
-              const SizedBox(
-                height: 10,
-              ),
-              // _forgotPassword(context),
-              const Text(
-                "___________________________or_____________________________",
-                style: TextStyle(color: Colors.grey),
-              ),
-              const SizedBox(
-                height: 5,
-              ),
-              outlinebuttn(context),
-
-              const SizedBox(
-                height: 1,
-              ),
-              _signup(context),
+              Row(mainAxisAlignment: MainAxisAlignment.end, children: [
+                _forgotPassword(context),
+              ]),
+              textline(),
+              textcontinue(),
+              buildiconbutton(context),
+              register(),
             ],
           ),
         ),
-      ),
+      ]),
+    );
+  }
+
+  Widget buildiconbutton(BuildContext context) {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        iconButton(context, Icon(FontAwesomeIcons.google), () {}, Colors.red),
+        iconButton(context, Icon(FontAwesomeIcons.apple), () {}, Colors.black),
+      ],
+    );
+  }
+
+  Widget iconButton(
+      BuildContext context, Icon icon, VoidCallback onPressed, Color color) {
+    return IconButton(
+      icon: icon,
+      onPressed: onPressed,
+      iconSize: 30,
+      color: color,
+    );
+  }
+
+  CustomText textcontinue() {
+    return const CustomText(
+      text: "continue with",
+      fontStyle: null,
+      color: Colors.black,
+      fontSize: 15,
+    );
+  }
+
+  CustomText textline() {
+    return const CustomText(
+      text: "__________________________or______________________________",
+      color: Colors.grey,
+      fontSize: 15,
+      fontStyle: null,
+    );
+    // CustomText(text: "Continue with", fontStyle: fontStyle, color: color)
+  }
+
+  Row register() {
+    return const Row(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        CustomText(
+          text: "Don't have account?",
+          // fontsize: 100,
+          fontSize: 15,
+          color: Colors.black,
+          fontStyle: FontStyle.normal,
+        ),
+        Const()
+      ],
     );
   }
 
@@ -59,13 +102,19 @@ class _LoginState extends State<Login> {
     return const Column(
       // mainAxisAlignment: MainAxisAlignment.start,
       children: [
-        // Positioned(child: ),
-        Text(
-          "LOGIN",
-          textAlign: TextAlign.right,
-          style: TextStyle(
-              fontSize: 40, color: Colors.white, fontWeight: FontWeight.bold),
+        CustomText(
+          text: "Welcome Back",
+          fontStyle: null,
+          color: Colors.black,
+          fontweigth: FontWeight.bold,
+          fontSize: 40,
         ),
+        CustomText(
+          text: "sign in to access your account",
+          fontStyle: null,
+          color: Colors.black,
+          fontSize: 15,
+        )
       ],
     );
   }
@@ -74,13 +123,6 @@ class _LoginState extends State<Login> {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.stretch,
       children: [
-        Container(
-          margin: const EdgeInsets.only(left: 20),
-          child: const Text(
-            "Username",
-            style: TextStyle(color: Colors.white),
-          ),
-        ),
         // Padding(padding: EdgeInsets.all(19)),
         Container(
           margin: const EdgeInsets.all(15),
@@ -89,16 +131,20 @@ class _LoginState extends State<Login> {
             controller: emailtext,
             // enabled: false,
 
-            style: const TextStyle(color: Colors.white),
+            style: const TextStyle(color: Colors.black),
 
             decoration: InputDecoration(
+              fillColor: Color.fromRGBO(196, 196, 196, 0.2),
+              filled: true,
               hintText: "Enter Your Username",
               hintStyle: const TextStyle(color: Colors.grey),
+              suffixIcon: Icon(Icons.mail),
               // fillColor: Color.fromRGBO(151, 151, 151, 1),
               // filled: true,
               focusedBorder: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(10),
-                borderSide: const BorderSide(color: Colors.blue),
+
+                // borderSide: const BorderSide(color: Colors.blue),
               ),
               enabledBorder: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(10),
@@ -112,26 +158,24 @@ class _LoginState extends State<Login> {
           ),
         ),
         // const SizedBox(height: 10),
-        Container(
-          margin: const EdgeInsets.only(left: 20),
-          child: const Text(
-            "Password",
-            style: TextStyle(color: Colors.white),
-          ),
-        ),
+
         Container(
           margin: const EdgeInsets.all(15),
           child: TextField(
             controller: password,
             obscureText: true,
+            obscuringCharacter: '*',
             // enabled: false,
-            style: const TextStyle(color: Colors.white),
+            style: const TextStyle(color: Colors.black),
             decoration: InputDecoration(
-                hintText: "PASSWORD",
+                fillColor: Color.fromRGBO(196, 196, 196, 0.2),
+                filled: true,
+                hintText: "Password",
                 hintStyle: const TextStyle(color: Colors.grey),
+                suffixIcon: Icon(Icons.lock),
                 focusedBorder: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(10),
-                  borderSide: const BorderSide(color: Colors.blue),
+                  // borderSide: const BorderSide(color: Colors.blue),
                 ),
                 enabledBorder: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(10),
@@ -151,8 +195,8 @@ class _LoginState extends State<Login> {
               String uname = emailtext.text.toString();
               String passwrd = password.text.toString();
               // print(uname);
-              Navigator.push(
-                  context, MaterialPageRoute(builder: (context) => Register()));
+              Navigator.push(context,
+                  MaterialPageRoute(builder: (context) => const Register()));
             },
             style: ElevatedButton.styleFrom(
               // shape: const StadiumBorder(),
@@ -171,104 +215,116 @@ class _LoginState extends State<Login> {
     );
   }
 
-  // _forgotPassword(context) {
-  //   return TextButton(
-  //       onPressed: () {},
-  //       child: const Text(
-  //         "Forgot password?",
-  //         style: TextStyle(color: Colors.red),
-  //       ));
-  // }
-
-  _signup(context) {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: [
-        const Text(
-          "Don’t have an account?",
-          style: TextStyle(color: Colors.grey),
-        ),
-        TextButton(onPressed: () {}, child: const Text("Register"))
-      ],
-    );
+  _forgotPassword(context) {
+    return TextButton(
+        onPressed: () {},
+        child: CustomText(
+          text: "Forget Password ?",
+          fontStyle: null,
+          color: Colors.red,
+          fontSize: 15,
+        ));
   }
 
-  outlinebuttn(context) {
-    return Column(
-      children: [
-        Container(
-          margin: const EdgeInsets.all(19), // Adjust margin as needed
-          // padding: EdgeInsets.all(10),
-          // padding: EdgeInsets.all(90),
-          width: 400, height: 70,
-          child: OutlinedButton(
-            onPressed: () {},
-            style: ButtonStyle(
-              shape: MaterialStatePropertyAll<RoundedRectangleBorder>(
-                  RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(10),
-                // side: BorderSide(color: Colors.blue)
-              )),
-              side: MaterialStateProperty.all<BorderSide>(
-                BorderSide(color: Colors.blue),
-              ),
-            ),
-            child: const Row(
-              // mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: [
-                Padding(padding: EdgeInsets.all(30)),
-                Icon(
-                  FontAwesomeIcons.google,
-                  color: Colors.red,
-                ),
-                SizedBox(
-                  width: 30,
-                ),
-                Text(
-                  "Continue With Google",
-                  style: TextStyle(color: Colors.white),
-                ),
-              ],
-            ),
-          ),
-        ),
-        Container(
-          margin: const EdgeInsets.all(19), // Adjust margin as needed
-          // padding: EdgeInsets.all(10),
-          // padding: EdgeInsets.all(90),
-          width: 400, height: 70,
-          child: OutlinedButton(
-            onPressed: () {},
-            style: ButtonStyle(
-              shape: MaterialStatePropertyAll<RoundedRectangleBorder>(
-                  RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(10),
-                // side: BorderSide(color: Colors.blue)
-              )),
-              side: MaterialStateProperty.all<BorderSide>(
-                BorderSide(color: Colors.blue),
-              ),
-            ),
-            child: const Row(
-              // mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: [
-                Padding(padding: EdgeInsets.all(30)),
-                Icon(
-                  FontAwesomeIcons.appStore,
-                  color: Colors.red,
-                ),
-                SizedBox(
-                  width: 30,
-                ),
-                Text(
-                  "Continue With Apple",
-                  style: TextStyle(color: Colors.white),
-                ),
-              ],
-            ),
-          ),
-        )
-      ],
+  // _signup(context) {
+  //   return Row(
+  //     mainAxisAlignment: MainAxisAlignment.center,
+  //     children: [
+  //       const Text(
+  //         "Don’t have an account?",
+  //         style: TextStyle(color: Colors.grey),
+  //       ),
+  //       TextButton(
+  //           onPressed: () {
+  //             Navigator.push(
+  //                 context, MaterialPageRoute(builder: (context) => Register()));
+  //           },
+  //           child: const Text("Register"))
+  //     ],
+  //   );
+  // }
+
+  // outlinebuttn(context) {
+  //   return Column(
+  //     children: [
+  //       Container(
+  //         margin: const EdgeInsets.all(19), // Adjust margin as needed
+  //         // padding: EdgeInsets.all(10),
+  //         // padding: EdgeInsets.all(90),
+  //         width: 400, height: 70,
+  //         child: OutlinedButton(
+  //           onPressed: () {},
+  //           style: ButtonStyle(
+  //             shape: MaterialStatePropertyAll<RoundedRectangleBorder>(
+  //                 RoundedRectangleBorder(
+  //               borderRadius: BorderRadius.circular(10),
+  //               // side: BorderSide(color: Colors.blue)
+  //             )),
+  //             side: MaterialStateProperty.all<BorderSide>(
+  //               const BorderSide(color: Colors.blue),
+  //             ),
+  //           ),
+  //           child: const Row(
+  //             // mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+  //             children: [
+  //               Padding(padding: EdgeInsets.all(30)),
+  //               Icon(
+  //                 FontAwesomeIcons.google,
+  //                 // color: Colors.red,
+  //               ),
+  //               SizedBox(
+  //                 width: 30,
+  //               ),
+  //               Text(
+  //                 "Continue With Google",
+  //                 style: TextStyle(color: Colors.black),
+  //               ),
+  //             ],
+  //           ),
+  //         ),
+  //       ),
+  //       Container(
+  //         margin: const EdgeInsets.all(19), // Adjust margin as needed
+  //         // padding: EdgeInsets.all(10),
+  //         // padding: EdgeInsets.all(90),
+  //         width: 400, height: 70,
+  //         child: OutlinedButton(
+  //           onPressed: () {},
+  //           style: ButtonStyle(
+  //             shape: MaterialStatePropertyAll<RoundedRectangleBorder>(
+  //                 RoundedRectangleBorder(
+  //               borderRadius: BorderRadius.circular(10),
+  //               // side: BorderSide(color: Colors.blue)
+  //             )),
+  //             side: MaterialStateProperty.all<BorderSide>(
+  //               const BorderSide(color: Colors.blue),
+  //             ),
+  //           ),
+  //           child: const Row(
+  //             // mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+  //             children: [
+  //               Padding(padding: EdgeInsets.all(30)),
+  //               Icon(
+  //                 FontAwesomeIcons.appStore,
+  //                 color: Colors.red,
+  //               ),
+  //               SizedBox(
+  //                 width: 30,
+  //               ),
+  //               Text(
+  //                 "Continue With Apple",
+  //                 style: TextStyle(color: Colors.white),
+  //               ),
+  //             ],
+  //           ),
+  //         ),
+  //       )
+  //     ],
+  //   );
+  // }
+  Widget buildcircl(BuildContext context) {
+    return CircleAvatar(
+      radius: 70,
     );
   }
 }
