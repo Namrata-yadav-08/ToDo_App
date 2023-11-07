@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:todoapp/login.dart';
-import 'package:todoapp/register.dart';
+import 'package:todoapp/Screens/WeekTask.dart';
+import 'package:todoapp/Screens/login.dart';
+import 'package:todoapp/Screens/register.dart';
 
 void main() {
   runApp(const MyApp());
@@ -18,7 +19,7 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: const Login(),
+      home: WeekTask(),
       // home: const MyHomePage(title: 'Flutter Demo Home Page'),
     );
   }
@@ -44,7 +45,15 @@ class _MyHomePageState extends State<MyHomePage> {
       body: const Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[],
+          children: [
+            // ElevatedButton(onPressed: (){}, child: Text("jnf"))
+            // FloatingActionButton(
+            //   onPressed: () {
+            //     print("vh");
+            //   },
+            //   child: Text("hjf"),
+            // )
+          ],
         ),
       ),
     );

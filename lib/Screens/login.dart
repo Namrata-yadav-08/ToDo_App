@@ -1,7 +1,7 @@
 import 'dart:ui';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:flutter/material.dart';
-import 'package:todoapp/register.dart';
+import 'package:todoapp/Screens/register.dart';
 import 'package:todoapp/widgets/const.dart';
 import 'package:todoapp/widgets/text.dart';
 
@@ -47,8 +47,10 @@ class _LoginState extends State<Login> {
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        iconButton(context, const Icon(FontAwesomeIcons.google), () {}, Colors.red),
-        iconButton(context, const Icon(FontAwesomeIcons.apple), () {}, Colors.black),
+        iconButton(
+            context, const Icon(FontAwesomeIcons.google), () {}, Colors.red),
+        iconButton(
+            context, const Icon(FontAwesomeIcons.apple), () {}, Colors.black),
       ],
     );
   }
@@ -123,7 +125,6 @@ class _LoginState extends State<Login> {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.stretch,
       children: [
-        
         Container(
           margin: const EdgeInsets.all(15),
           child: TextField(

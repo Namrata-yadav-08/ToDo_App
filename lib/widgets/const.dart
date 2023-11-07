@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:todoapp/register.dart';
+import 'package:todoapp/Screens/register.dart';
 import 'package:todoapp/widgets/text.dart';
 
 class Const extends StatelessWidget {

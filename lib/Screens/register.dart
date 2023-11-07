@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:todoapp/login.dart';
+import 'package:todoapp/Screens/login.dart';
 import 'package:todoapp/widgets/text.dart';
 
 class Register extends StatefulWidget {
