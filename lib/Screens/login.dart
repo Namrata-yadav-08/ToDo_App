@@ -195,8 +195,7 @@ class _LoginState extends State<Login> {
               String uname = emailtext.text.toString();
               String passwrd = password.text.toString();
               // print(uname);
-              Navigator.push(context,
-                  MaterialPageRoute(builder: (context) => const Register()));
+              Navigator.pushNamed(context, 'main_screen');
             },
             style: ElevatedButton.styleFrom(
               // shape: const StadiumBorder(),

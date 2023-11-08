@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:to_do_app/screens/calendar.dart';
-import 'package:to_do_app/screens/focus.dart';
-import 'package:to_do_app/screens/home.dart';
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:to_do_app/screens/profile.dart';
+import 'package:todoapp/Screens/WeekTask.dart';
+import 'package:todoapp/Screens/focus.dart';
+import 'package:todoapp/Screens/home.dart';
+import 'package:todoapp/Screens/profile.dart';
 
 class Main_Screen extends StatefulWidget {
   const Main_Screen({super.key});
@@ -17,7 +17,7 @@ class _Main_ScreenState extends State<Main_Screen> {
   int _index = 0;
   final screens = [
     const Home(),
-    const Calendar(),
+    const WeekTask(),
     const InFocus(),
     const Profile()
   ];
