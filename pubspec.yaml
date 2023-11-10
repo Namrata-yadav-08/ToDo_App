@@ -43,6 +43,7 @@ dependencies:
   intl: ^0.18.1
   get:
   date_picker_timeline:
+  firebase_core: ^2.22.0
 
 
 

@@ -93,7 +93,7 @@ class _Main_ScreenState extends State<Main_Screen> {
                       width: 65,
                       child: FloatingActionButton(
                         onPressed: () {
-                          Navigator.pushNamed(context, 'task');
+                          Navigator.pushNamed(context, 'new_task');
                         },
                         // backgroundColor: const Color.fromARGB(255, 77, 78, 237),
                         elevation: 0,
