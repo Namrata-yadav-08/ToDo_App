@@ -5,9 +5,11 @@ import 'package:flutter_slidable/flutter_slidable.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';
+import 'package:todoapp/Screens/createtask.dart';
 import 'package:todoapp/Screens/register.dart';
 import 'package:todoapp/widgets/text.dart';
 import 'package:todoapp/widgets/todocontainer.dart';
+import 'package:todoapp/widgets/todolist.dart';
 
 class WeekTask extends StatefulWidget {
   const WeekTask({super.key});
@@ -18,17 +20,35 @@ class WeekTask extends StatefulWidget {
 
 class _WeekTaskState extends State<WeekTask> {
   DateTime selecteddate = DateTime.now();
-  List todolist = ["Makevg", "jggj", "gytg"];
-  // void addnewtask() {
+  // List todolist = ["Makjjjjjjjjevg", "jghhhhhhhhj", "kjhgfd", "kjhgfddfghjk"];
+
+  // void addtask() {
   //   setState(() {
-  //     todolist.add([controller.text, false]);
+  //     // String result = createtask() as String;
+  //     todolist.add(result);
   //   });
 
-  // final _myBox = Hive.box('mybox');
+  //   // final _myBox = Hive.box('mybox');
 
-  // ToDoDataBase db = ToDoDataBase();
-
+  //   // ToDoDataBase db = ToDoDataBase();
   // }
+
+  void addask(index) async {
+    // Navigate to the AddTaskScreen and wait for a result
+    final result = await Navigator.push(
+      context,
+      MaterialPageRoute(builder: (context) => createtask()),
+    );
+
+    // Check if the result is not null (user added a task)
+    if (result != null) {
+      setState(() {
+        // Add the task to the list
+        deleteTask(index);
+        todolist.add(result);
+      });
+    }
+  }
 
   //  void initState() {
   //   // if this is the 1st time ever openin the app, then create default data
@@ -72,11 +92,56 @@ class _WeekTaskState extends State<WeekTask> {
   //   db.updateDataBase();
   // }
 
-  //   void deleteTask(int index) {
+  void deleteTask(int index) {
+    setState(() {
+      todolist.removeAt(index);
+    });
+    // updateDataBase();
+  }
+
+  // void checkbox(bool? value, int index) {
   //   setState(() {
-  //     db.toDoList.removeAt(index);
+  //     todolist[index][1] = value ?? false;
   //   });
-  //   db.updateDataBase();
+  // }
+
+  // void editTask(int index) {
+  //   TextEditingController taskController =
+  //       TextEditingController(text: todolist[index]);
+
+  //   showDialog(
+  //     context: context,
+  //     builder: (context) {
+  //       return AlertDialog(
+  //         title: Text('Edit Task'),
+  //         content: TextField(
+  //           controller: taskController,
+  //           decoration: InputDecoration(labelText: 'Task Name'),
+  //         ),
+  //         actions: [
+  //           ElevatedButton(
+  //             onPressed: () {
+  //               Navigator.of(context).pop();
+  //             },
+  //             child: Text('Cancel'),
+  //           ),
+  //           ElevatedButton(
+  //             onPressed: () {
+  //               editTaskName(index, taskController.text);
+  //               Navigator.of(context).pop();
+  //             },
+  //             child: Text('Save'),
+  //           ),
+  //         ],
+  //       );
+  //     },
+  //   );
+  // }
+
+  // void editTaskName(int index, String newTaskName) {
+  //   setState(() {
+  //     todolist[index] = newTaskName;
+  //   });
   // }
 
   @override
@@ -99,13 +164,18 @@ class _WeekTaskState extends State<WeekTask> {
             child: ListView.builder(
                 itemCount: todolist.length,
                 itemBuilder: (context, index) {
-                  // return ToDoTile(
-                  //         taskName: db.toDoList[index][0],
-                  // taskCompleted: db.toDoList[index][1],
-                  // onChanged: (value) => checkBoxChanged(value, index),
-                  // deleteFunction: (context) => deleteTask(index),
+                  return ToDoCon(
+                    taskname: todolist[index],
+                    taskcomplete: false,
+                    onchanged: (bool? value) {},
+                    deletefun: (context) => deleteTask(index),
+                    editfunc: (context) => addask(index),
 
-                  // );
+                    // taskname: todolist[index][0],
+                    // tasknompleted: todolist[index][1],
+                    // onChanged: (value) => checkbox(value, index),
+                    // deleteFunction: (context) => deleteTask(index),
+                  );
                 }),
           ),
           // FloatingActionButton(

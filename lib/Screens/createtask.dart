@@ -4,6 +4,8 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:intl/intl.dart';
+import 'package:todoapp/Screens/WeekTask.dart';
+import 'package:todoapp/widgets/todolist.dart';
 // import 'package:todoapp/widgets/CustomTextField.dart';
 
 class createtask extends StatefulWidget {
@@ -19,6 +21,23 @@ class createtaskState extends State<createtask> {
   var selecteddate = DateTime.now();
   String endtime = "9:30 pm";
   String starttime = DateFormat("hh:mm a").format(DateTime.now()).toString();
+
+  void addTask(String tasknamew) async {
+    // Navigate to the AddTaskScreen and wait for a result
+    final result = await Navigator.push(
+      context,
+      MaterialPageRoute(builder: (context) => createtask()),
+    );
+
+    // Check if the result is not null (user added a task)
+    if (result != null) {
+      setState(() {
+        // Add the task to the list
+        todolist.add(result);
+      });
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -192,7 +211,12 @@ class createtaskState extends State<createtask> {
                   child: ElevatedButton(
                     onPressed: () {
                       validatedata();
-                      Navigator.pushNamed(context, 'WeekTask');
+                      List data = [taskname.text, description.text];
+                      // return taskname.text,
+                      Navigator.pop(context, taskname.text);
+                      // addTask(taskname.text);
+                      // Navigator.pushNamed(context, 'WeekTask');
+                      // WeekTask();
                     },
                     style: ButtonStyle(
                         backgroundColor: MaterialStateProperty.all<Color>(
