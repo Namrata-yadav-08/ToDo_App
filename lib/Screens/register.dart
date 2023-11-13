@@ -1,10 +1,15 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:todoapp/Screens/login.dart';
 import 'package:todoapp/widgets/text.dart';
 
 class Register extends StatefulWidget {
-  const Register({super.key});
+  const Register({
+    super.key,
+    required void Function() onTap,
+  });
 
   @override
   State<Register> createState() => _RegisterState();
@@ -14,9 +19,76 @@ class _RegisterState extends State<Register> {
   var emailtext = TextEditingController();
   var password = TextEditingController();
   var confirmpass = TextEditingController();
+  // bool showLogin = true;
+  // void togglePages() {
+  //   setState(() {
+  //     showLogin = !showLogin;
+  //   });
+  // }
+  void usersignup() async {
+    showDialog(
+      context: context,
+      builder: (context) {
+        return const Center(
+          child: CircularProgressIndicator(),
+        );
+      },
+    );
+    try {
+      if (password.text == confirmpass.text) {
+        await FirebaseAuth.instance.createUserWithEmailAndPassword(
+          email: emailtext.text,
+          password: password.text,
+        );
+        showdialog(context);
+        Navigator.push(
+            context,
+            MaterialPageRoute(
+                builder: (context) => Login(
+                      onTap: () {},
+                    )));
+        Navigator.of(context).pop();
+      } else {
+        Navigator.pop(context);
+        showErrorMessage("Password doesn't match");
+      }
+
+      //     );
+      //   } else {
+      //     showErrorMessage("Password doesn't match");
+      //   }
+      //   Navigator.pop(context);
+    } on FirebaseAuthException catch (e) {
+      Navigator.pop(context);
+      showErrorMessage(e.code);
+    }
+  }
+
+  void showErrorMessage(String message) {
+    showDialog(
+      context: context,
+      builder: (context) {
+        return AlertDialog(
+          backgroundColor: Color.fromARGB(255, 245, 240, 255),
+          title: Center(
+              child: Text(message,
+                  style: GoogleFonts.montserrat(
+                    textStyle: const TextStyle(
+                      color: Color.fromARGB(255, 104, 29, 255),
+                      fontSize: 25,
+                      fontWeight: FontWeight.w600,
+                    ),
+                  ))),
+        );
+      },
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
+    // if (showLogin = true) {
+    //   return Login();
+    // }
     return Scaffold(
       backgroundColor: Colors.white,
       body: ListView(children: [
@@ -37,10 +109,28 @@ class _RegisterState extends State<Register> {
               //   height: 10,
               // ),
               // _forgotPassword(context),
-              const Text(
-                "___________________________or_____________________________",
-                style: TextStyle(color: Colors.grey),
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Row(
+                  children: [
+                    Expanded(
+                        child: Divider(
+                      thickness: 1,
+                      color: Colors.grey,
+                    )),
+                    Text('or', style: TextStyle(color: Colors.grey)),
+                    Expanded(
+                        child: Divider(
+                      thickness: 1,
+                      color: Colors.grey,
+                    ))
+                  ],
+                ),
               ),
+              // const Text(
+              //   "___________________________or_____________________________",
+              //   style: TextStyle(color: Colors.grey),
+              // ),
               // const SizedBox(
               //   height: 5,
               // ),
@@ -65,8 +155,12 @@ class _RegisterState extends State<Register> {
             actions: <Widget>[
               TextButton(
                   onPressed: () {
-                    Navigator.push(context,
-                        MaterialPageRoute(builder: (context) => const Login()));
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => Login(
+                                  onTap: () {},
+                                )));
                     // Navigator.of(context).pop();
                   },
                   child: const Text("OK")),
@@ -208,12 +302,17 @@ class _RegisterState extends State<Register> {
             onPressed: () {
               String uname = emailtext.text.toString();
               String passwrd = password.text.toString();
-              showdialog(context);
+              // showdialog(context);
+              usersignup();
 
               // print(uname);
-              Navigator.push(context,
-                  MaterialPageRoute(builder: (context) => const Login()));
-              Navigator.of(context).pop();
+              // Navigator.push(
+              //     context,
+              //     MaterialPageRoute(
+              //         builder: (context) => Login(
+              //               onTap: () {},
+              //             )));
+              // Navigator.of(context).pop();
             },
             style: ElevatedButton.styleFrom(
               // shape: const StadiumBorder(),

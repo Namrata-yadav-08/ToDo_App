@@ -10,7 +10,11 @@ class Const extends StatelessWidget {
     return TextButton(
         onPressed: () {
           Navigator.push(
-              context, MaterialPageRoute(builder: (context) => Register()));
+              context,
+              MaterialPageRoute(
+                  builder: (context) => Register(
+                        onTap: () {},
+                      )));
         },
         child: const Text("Register"));
   }
