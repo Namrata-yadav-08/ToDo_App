@@ -1,3 +1,5 @@
+import 'dart:ui';
+
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -69,7 +71,7 @@ class createtaskState extends State<createtask> {
                                 // onpressed;
                                 gettime(isstarttime: true);
                               },
-                              icon: Icon(Icons.timer)),
+                              icon: const Icon(Icons.timer)),
                           border: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(5)),
                         ),
@@ -91,7 +93,7 @@ class createtaskState extends State<createtask> {
                             // onpressed;
                             gettime(isstarttime: false);
                           },
-                          icon: Icon(Icons.timer)),
+                          icon: const Icon(Icons.timer)),
                       border: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(5)),
                     ),
@@ -184,12 +186,26 @@ class createtaskState extends State<createtask> {
                             ]),
                       ),
                     )),
-                ElevatedButton(
+                const Padding(padding: EdgeInsets.all(15)),
+
+                Center(
+                  child: ElevatedButton(
                     onPressed: () {
                       validatedata();
                       Navigator.pushNamed(context, 'WeekTask');
                     },
-                    child: const Text("Create Task"))
+                    style: ButtonStyle(
+                        backgroundColor: MaterialStateProperty.all<Color>(
+                            // Gradient.linear()
+                            const Color.fromARGB(255, 255, 100,
+                                125)), // Change to your desired color
+                        padding: MaterialStateProperty.all<EdgeInsetsGeometry>(
+                          const EdgeInsets.symmetric(
+                              vertical: 16.0, horizontal: 24.0),
+                        )),
+                    child: const Text("Create Task"),
+                  ),
+                )
               ]),
         ]));
   }
@@ -209,14 +225,14 @@ class createtaskState extends State<createtask> {
 
         autofocus: false,
         // controller: ,
-        style: TextStyle(color: Colors.black),
+        style: const TextStyle(color: Colors.black),
         decoration: InputDecoration(
             hintText: DateFormat.yMEd().format(selecteddate),
             prefixIcon: IconButton(
                 onPressed: () {
                   getdate();
                 },
-                icon: Icon(Icons.calendar_today)),
+                icon: const Icon(Icons.calendar_today)),
             border: OutlineInputBorder(borderRadius: BorderRadius.circular(5))),
       ),
     );
@@ -270,7 +286,7 @@ class createtaskState extends State<createtask> {
           snackPosition: SnackPosition.TOP,
           backgroundColor: Colors.black,
           colorText: Colors.black,
-          icon: Icon(Icons.warning_outlined));
+          icon: const Icon(Icons.warning_outlined));
     }
   }
 

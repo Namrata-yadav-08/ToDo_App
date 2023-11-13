@@ -23,10 +23,61 @@ class _WeekTaskState extends State<WeekTask> {
   //   setState(() {
   //     todolist.add([controller.text, false]);
   //   });
+
+  // final _myBox = Hive.box('mybox');
+
+  // ToDoDataBase db = ToDoDataBase();
+
   // }
-  void deletetask(int index) {
-    todolist.removeAt(index);
-  }
+
+  //  void initState() {
+  //   // if this is the 1st time ever openin the app, then create default data
+  //   if (_myBox.get("TODOLIST") == null) {
+  //     db.createInitialData();
+  //   } else {
+  //     // there already exists data
+  //     db.loadData();
+  //   }
+
+  //   super.initState();
+  // }
+
+  // // text controller
+  // final _controller = TextEditingController();
+  //  void createNewTask() {
+  //   showDialog(
+  //     context: context,
+  //     builder: (context) {
+  //       return DialogBox(
+  //         controller: _controller,
+  //         onSave: saveNewTask,
+  //         onCancel: () => Navigator.of(context).pop(),
+  //       );
+  //     },
+  //   );
+  // }
+  //   void checkBoxChanged(bool? value, int index) {
+  //   setState(() {
+  //     db.toDoList[index][1] = !db.toDoList[index][1];
+  //   });
+  //   db.updateDataBase();
+  // }
+
+  //  void saveNewTask() {
+  //   setState(() {
+  //     db.toDoList.add([_controller.text, false]);
+  //     _controller.clear();
+  //   });
+  //   Navigator.of(context).pop();
+  //   db.updateDataBase();
+  // }
+
+  //   void deleteTask(int index) {
+  //   setState(() {
+  //     db.toDoList.removeAt(index);
+  //   });
+  //   db.updateDataBase();
+  // }
 
   @override
   Widget build(BuildContext context) {
@@ -41,18 +92,20 @@ class _WeekTaskState extends State<WeekTask> {
           const Padding(padding: EdgeInsets.all(20)),
           Container(
             decoration: BoxDecoration(
-                color: const Color.fromRGBO(208, 198, 198, 0.906),
+                // color: Color.fromARGB(231, 255, 245, 245),
                 borderRadius: BorderRadius.circular(40)),
             // color: Colors.amber,
             height: MediaQuery.of(context).size.height,
             child: ListView.builder(
                 itemCount: todolist.length,
                 itemBuilder: (context, index) {
-                  return ToDoCon(
-                    taskname: todolist[index],
-                    taskcomplete: false,
-                    deletefun: (context) => deletetask(index),
-                  );
+                  // return ToDoTile(
+                  //         taskName: db.toDoList[index][0],
+                  // taskCompleted: db.toDoList[index][1],
+                  // onChanged: (value) => checkBoxChanged(value, index),
+                  // deleteFunction: (context) => deleteTask(index),
+
+                  // );
                 }),
           ),
           // FloatingActionButton(
