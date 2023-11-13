@@ -31,7 +31,7 @@ class _WeekTaskState extends State<WeekTask> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color.fromARGB(244, 229, 237, 242),
+      backgroundColor: Color.fromARGB(255, 244, 244, 244),
       body: ListView(
         children: [
           User(),
