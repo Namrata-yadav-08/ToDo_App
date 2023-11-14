@@ -22,6 +22,9 @@ class _Main_ScreenState extends State<Main_Screen> {
     const Profile()
   ];
   final navigationKey = GlobalKey<CurvedNavigationBarState>();
+
+
+  
   Shader _headerGradient(BuildContext context) {
     return const LinearGradient(
       colors: <Color>[
