@@ -88,6 +88,15 @@ class _WeekTaskState extends State<WeekTask> {
           User(),
           currentdate(),
           datepicker(),
+//           // ...
+// GradientDatePicker(
+//   initialDate: DateTime.now(),
+//   onDateChange: (date) {
+//     // Handle date change
+//   },
+// ),
+// // ...
+
           // Row(),
           const Padding(padding: EdgeInsets.all(20)),
           Container(
@@ -159,42 +168,54 @@ class _WeekTaskState extends State<WeekTask> {
 
   Slidable datepicker() {
     return Slidable(
-      // endActionPane: ,
-      endActionPane: const ActionPane(
-        motion: StretchMotion(),
-        children: [
-          Icon(Icons.delete),
-          // SlidableAction(
-          //   onPressed: () {},
-          //   icon: FontAwesomeIcons.deleteLeft,
-          // ),
-          // SlidableAction(
-          //   onPressed: donefun,
-          //   icon: Icons.done,
-          // ),
-          // SlidableAction(
-          //   onPressed: editfunc,
-          //   icon: Icons.edit,
-          // )
-        ],
-      ),
-      child: Container(
-        margin: const EdgeInsets.only(top: 20),
-        child: DatePicker(
-          DateTime.now(),
-          height: 100,
-          width: 80,
-          initialSelectedDate: DateTime.now(),
-          selectionColor: const Color.fromRGBO(254, 155, 143, 1),
-          selectedTextColor: const Color.fromRGBO(255, 255, 255, 1),
-          dateTextStyle: const TextStyle(
-              fontSize: 16, fontWeight: FontWeight.w600, color: Colors.grey),
-          onDateChange: (date) {
-            selecteddate = date;
-          },
+        // endActionPane: ,
+        endActionPane: const ActionPane(
+          motion: StretchMotion(),
+          children: [
+            Icon(Icons.delete),
+            // SlidableAction(
+            //   onPressed: () {},
+            //   icon: FontAwesomeIcons.deleteLeft,
+            // ),
+            // SlidableAction(
+            //   onPressed: donefun,
+            //   icon: Icons.done,
+            // ),
+            // SlidableAction(
+            //   onPressed: editfunc,
+            //   icon: Icons.edit,
+            // )
+          ],
         ),
-      ),
-    );
+        child: Container(
+            margin: const EdgeInsets.only(top: 20),
+            child: DatePicker(
+              DateTime.now(),
+              height: 100,
+              width: 80,
+              initialSelectedDate: DateTime.now(),
+
+              selectionColor: const Color.fromRGBO(254, 155, 143, 1),
+              selectedTextColor: const Color.fromRGBO(255, 255, 255, 1),
+              dateTextStyle: const TextStyle(
+                  fontSize: 16,
+                  fontWeight: FontWeight.w600,
+                  color: Colors.grey),
+              onDateChange: (date) {
+                selecteddate = date;
+              },
+              // dayContainerDecoration: BoxDecoration(
+              //   gradient: LinearGradient(
+              //     colors: [
+              //       Color.fromRGBO(254, 155, 143, 1),
+              //       Color.fromRGBO(255, 94, 77, 1),
+              //     ],
+              //     begin: Alignment.topLeft,
+              //     end: Alignment.bottomRight,
+              //   ),
+              //   borderRadius: BorderRadius.circular(16),
+              // ),
+            )));
   }
 
   Container User() {

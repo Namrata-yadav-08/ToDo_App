@@ -329,7 +329,9 @@ class _LoginState extends State<Login> {
 
   _forgotPassword(context) {
     return TextButton(
-        onPressed: () {},
+        onPressed: () {
+          Navigator.pushNamed(context, 'forgotpasswordpage');
+        },
         child: const CustomText(
           text: "Forget Password ?",
           fontStyle: null,

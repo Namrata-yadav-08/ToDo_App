@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:intl/intl.dart';
@@ -107,7 +108,9 @@ class _HomeState extends State<Home> {
                             height: 141,
                             child: Center(
                               child: TextButton(
-                                  onPressed: () {},
+                                  onPressed: () async {
+                                    await FirebaseAuth.instance.signOut();
+                                  },
                                   child: Text(
                                     'Shopping',
                                     style: TextStyle(color: Colors.white),

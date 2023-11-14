@@ -9,6 +9,7 @@ import 'package:todoapp/Screens/createtask.dart';
 
 import 'package:todoapp/Screens/edit_task.dart';
 import 'package:todoapp/Screens/focus.dart';
+import 'package:todoapp/Screens/forgotpasswordpage.dart';
 import 'package:todoapp/Screens/home.dart';
 import 'package:todoapp/Screens/login.dart';
 import 'package:todoapp/Screens/main_screen.dart';
@@ -51,6 +52,7 @@ class MyApp extends StatelessWidget {
         'task_list': (context) => const Task_List(),
         'auth_page': (context) => const AuthPage(),
         'createtask': (context) => const createtask(),
+        'forgotpasswordpage': (context) => const ForgotPassword(),
       },
     );
   }
