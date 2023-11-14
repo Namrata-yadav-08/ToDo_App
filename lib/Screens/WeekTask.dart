@@ -33,7 +33,7 @@ class _WeekTaskState extends State<WeekTask> {
   //   // ToDoDataBase db = ToDoDataBase();
   // }
 
-  void addask(index) async {
+  void edittask(index) async {
     // Navigate to the AddTaskScreen and wait for a result
     final result = await Navigator.push(
       context,
@@ -43,10 +43,12 @@ class _WeekTaskState extends State<WeekTask> {
     // Check if the result is not null (user added a task)
     if (result != null) {
       setState(() {
-        // Add the task to the list
-        deleteTask(index);
-        todolist.add(result);
+        // Add the edited task to the list
+        todolist[index] = result;
       });
+
+      // Now delete the old task
+      deleteTask(index);
     }
   }
 
@@ -169,7 +171,10 @@ class _WeekTaskState extends State<WeekTask> {
                     taskcomplete: false,
                     onchanged: (bool? value) {},
                     deletefun: (context) => deleteTask(index),
-                    editfunc: (context) => addask(index),
+                    editfunc: (context) {
+                      edittask(index);
+                      deleteTask(index);
+                    },
 
                     // taskname: todolist[index][0],
                     // tasknompleted: todolist[index][1],

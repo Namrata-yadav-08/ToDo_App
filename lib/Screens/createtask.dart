@@ -26,7 +26,7 @@ class createtaskState extends State<createtask> {
     // Navigate to the AddTaskScreen and wait for a result
     final result = await Navigator.push(
       context,
-      MaterialPageRoute(builder: (context) => createtask()),
+      MaterialPageRoute(builder: (context) => WeekTask()),
     );
 
     // Check if the result is not null (user added a task)
@@ -212,8 +212,10 @@ class createtaskState extends State<createtask> {
                     onPressed: () {
                       validatedata();
                       List data = [taskname.text, description.text];
+                      addTask(taskname.text);
                       // return taskname.text,
                       Navigator.pop(context, taskname.text);
+                      Navigator.pushNamed(context, "main_screen");
                       // addTask(taskname.text);
                       // Navigator.pushNamed(context, 'WeekTask');
                       // WeekTask();

@@ -1,5 +1,1 @@
-List todolist = ["Makjjjjjjjjevg", "jghhhhhhhhj", "kjhgfd", "kjhgfddfghjk"];
-
-
-
-
+List todolist = ["Add New Task"];
