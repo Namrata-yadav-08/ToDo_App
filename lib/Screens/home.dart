@@ -71,7 +71,7 @@ class _HomeState extends State<Home> {
               padding:
                   const EdgeInsets.fromLTRB(32, 120, 0, 0), // Add left padding
               child: Text(
-                "Categs",
+                "Category",
                 style: GoogleFonts.montserrat(
                   textStyle: const TextStyle(
                     color: Colors.black,
@@ -107,7 +107,11 @@ class _HomeState extends State<Home> {
                             height: 141,
                             child: Center(
                               child: TextButton(
-                                  onPressed: () {}, child: Text('Shopping')),
+                                  onPressed: () {},
+                                  child: Text(
+                                    'Shopping',
+                                    style: TextStyle(color: Colors.white),
+                                  )),
                             ),
                           )),
                       Padding(
@@ -127,7 +131,11 @@ class _HomeState extends State<Home> {
                             height: 141,
                             child: Center(
                               child: TextButton(
-                                  onPressed: () {}, child: Text('Shopping')),
+                                  onPressed: () {},
+                                  child: Text(
+                                    'Personal',
+                                    style: TextStyle(color: Colors.white),
+                                  )),
                             ),
                           )),
                       Padding(
@@ -145,14 +153,14 @@ class _HomeState extends State<Home> {
                                   ])),
                           width: 95,
                           height: 141,
-                          child: Column(children: [
-                            Image.asset(
-                              'assets/images/Group 177.png',
-                            ),
-                            TextButton(
-                                onPressed: () {}, child: Text('Shopping')),
-                            Text('2 tasks')
-                          ]),
+                          child: Center(
+                            child: TextButton(
+                                onPressed: () {},
+                                child: Text(
+                                  'Work',
+                                  style: TextStyle(color: Colors.white),
+                                )),
+                          ),
                         ),
                       ),
                       Padding(
@@ -172,29 +180,13 @@ class _HomeState extends State<Home> {
                             height: 141,
                             child: Center(
                               child: TextButton(
-                                  onPressed: () {}, child: Text('Shopping')),
+                                  onPressed: () {},
+                                  child: Text(
+                                    'Others',
+                                    style: TextStyle(color: Colors.white),
+                                  )),
                             ),
                           )),
-                      Padding(
-                          padding: const EdgeInsets.all(12.0),
-                          child: Container(
-                            decoration: const BoxDecoration(
-                                borderRadius:
-                                    BorderRadius.all(Radius.circular(15)),
-                                gradient: LinearGradient(
-                                    begin: Alignment.topCenter,
-                                    end: Alignment.bottomCenter,
-                                    colors: [
-                                      Color.fromARGB(255, 250, 140, 119),
-                                      Color.fromARGB(255, 243, 48, 96),
-                                    ])),
-                            width: 95,
-                            height: 141,
-                            child: Center(
-                              child: TextButton(
-                                  onPressed: () {}, child: Text('Shopping')),
-                            ),
-                          ))
                     ],
                   ),
                 )

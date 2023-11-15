@@ -1,20 +1,119 @@
 import 'dart:ui';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:todoapp/Screens/register.dart';
 import 'package:todoapp/widgets/const.dart';
 import 'package:todoapp/widgets/text.dart';
 
 class Login extends StatefulWidget {
-  const Login({super.key});
+  const Login({
+    super.key,
+    required void Function() onTap,
+  });
 
   @override
   State<Login> createState() => _LoginState();
 }
 
 class _LoginState extends State<Login> {
-  var emailtext = TextEditingController();
-  var password = TextEditingController();
+  final emailtext = TextEditingController();
+  final password = TextEditingController();
+
+  // bool showingDialog = false;
+  void signuserin() async {
+    // if (showingDialog) {
+    //   return;
+    // }
+    // showingDialog = true;
+
+    showDialog(
+      context: context,
+      builder: (context) {
+        return const Center(
+          child: CircularProgressIndicator(),
+        );
+      },
+    );
+    try {
+      await FirebaseAuth.instance.signInWithEmailAndPassword(
+        email: emailtext.text,
+        password: password.text,
+      );
+      Navigator.pop(context);
+    } on FirebaseAuthException catch (e) {
+      Navigator.pop(context);
+      showErrorMessage(e.code);
+      // if (e.code == 'user-not-found') {
+      //   // print("NO USER FOUND FOR THAT EMAIL");
+      //   wrongEmailMessage();
+      // } else if (e.code == 'wrong-password') {
+      //   // print('WRONG PASSWORD');
+      //   wrongPasswordMessage();
+      // }
+      // return;
+    }
+    // finally {
+    //   showingDialog = false;
+    // }
+
+    // Navigator.pop(context);
+  }
+
+  void showErrorMessage(String message) {
+    showDialog(
+      context: context,
+      builder: (context) {
+        return AlertDialog(
+          backgroundColor: Color.fromARGB(255, 245, 240, 255),
+          title: Center(
+              child: Text(message,
+                  style: GoogleFonts.montserrat(
+                    textStyle: const TextStyle(
+                      color: Color.fromARGB(255, 104, 29, 255),
+                      fontSize: 25,
+                      fontWeight: FontWeight.w600,
+                    ),
+                  ))),
+        );
+      },
+    );
+  }
+
+  // void wrongEmailMessage() {
+  //   showDialog(
+  //     context: context,
+  //     builder: (context) {
+  //       return const AlertDialog(
+  //         backgroundColor: Colors.black,
+  //         title: Center(
+  //             child: Text(
+  //           'Incorrect Email!',
+  //           style: TextStyle(color: Colors.lime),
+  //         )),
+  //       );
+  //     },
+  //   );
+  // }
+
+  // void wrongPasswordMessage() {
+  //   showDialog(
+  //     context: context,
+  //     builder: (context) {
+  //       return const AlertDialog(
+  //         backgroundColor: Colors.black,
+  //         title: Center(
+  //             child: Text(
+  //           'Incorrect Password!',
+  //           style: TextStyle(color: Colors.white),
+  //         )),
+  //       );
+  //     },
+  //   );
+  // }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -32,7 +131,25 @@ class _LoginState extends State<Login> {
               Row(mainAxisAlignment: MainAxisAlignment.end, children: [
                 _forgotPassword(context),
               ]),
-              textline(),
+              //textline(),
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Row(
+                  children: [
+                    Expanded(
+                        child: Divider(
+                      thickness: 1,
+                      color: Colors.grey,
+                    )),
+                    Text('or', style: TextStyle(color: Colors.grey)),
+                    Expanded(
+                        child: Divider(
+                      thickness: 1,
+                      color: Colors.grey,
+                    ))
+                  ],
+                ),
+              ),
               textcontinue(),
               buildiconbutton(context),
               register(),
@@ -165,7 +282,6 @@ class _LoginState extends State<Login> {
             controller: password,
             obscureText: true,
             obscuringCharacter: '*',
-            // enabled: false,
             style: const TextStyle(color: Colors.black),
             decoration: InputDecoration(
                 fillColor: const Color.fromRGBO(196, 196, 196, 0.2),
@@ -179,11 +295,7 @@ class _LoginState extends State<Login> {
                 ),
                 enabledBorder: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(10),
-                    borderSide: const BorderSide(color: Colors.white))
-                // disabledBorder: OutlineInputBorder()
-                ,
-                // suffixText: "hbchjdbch",
-
+                    borderSide: const BorderSide(color: Colors.white)),
                 suffixStyle: const TextStyle(color: Colors.indigo)),
           ),
         ),
@@ -195,7 +307,8 @@ class _LoginState extends State<Login> {
               String uname = emailtext.text.toString();
               String passwrd = password.text.toString();
               // print(uname);
-              Navigator.pushNamed(context, 'main_screen');
+              // Navigator.pushNamed(context, 'main_screen');
+              signuserin();
             },
             style: ElevatedButton.styleFrom(
               // shape: const StadiumBorder(),

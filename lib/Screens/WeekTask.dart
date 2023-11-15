@@ -5,9 +5,11 @@ import 'package:flutter_slidable/flutter_slidable.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';
+import 'package:todoapp/Screens/createtask.dart';
 import 'package:todoapp/Screens/register.dart';
 import 'package:todoapp/widgets/text.dart';
 import 'package:todoapp/widgets/todocontainer.dart';
+import 'package:todoapp/widgets/todolist.dart';
 
 class WeekTask extends StatefulWidget {
   const WeekTask({super.key});
@@ -18,20 +20,136 @@ class WeekTask extends StatefulWidget {
 
 class _WeekTaskState extends State<WeekTask> {
   DateTime selecteddate = DateTime.now();
-  List todolist = ["Makevg", "jggj", "gytg"];
-  // void addnewtask() {
+  // List todolist = ["Makjjjjjjjjevg", "jghhhhhhhhj", "kjhgfd", "kjhgfddfghjk"];
+
+  // void addtask() {
   //   setState(() {
-  //     todolist.add([controller.text, false]);
+  //     // String result = createtask() as String;
+  //     todolist.add(result);
+  //   });
+
+  //   // final _myBox = Hive.box('mybox');
+
+  //   // ToDoDataBase db = ToDoDataBase();
+  // }
+
+  void edittask(index) async {
+    // Navigate to the AddTaskScreen and wait for a result
+    final result = await Navigator.push(
+      context,
+      MaterialPageRoute(builder: (context) => createtask()),
+    );
+
+    // Check if the result is not null (user added a task)
+    if (result != null) {
+      setState(() {
+        // Add the edited task to the list
+        todolist[index] = result;
+      });
+
+      // Now delete the old task
+      deleteTask(index);
+    }
+  }
+
+  //  void initState() {
+  //   // if this is the 1st time ever openin the app, then create default data
+  //   if (_myBox.get("TODOLIST") == null) {
+  //     db.createInitialData();
+  //   } else {
+  //     // there already exists data
+  //     db.loadData();
+  //   }
+
+  //   super.initState();
+  // }
+
+  // // text controller
+  // final _controller = TextEditingController();
+  //  void createNewTask() {
+  //   showDialog(
+  //     context: context,
+  //     builder: (context) {
+  //       return DialogBox(
+  //         controller: _controller,
+  //         onSave: saveNewTask,
+  //         onCancel: () => Navigator.of(context).pop(),
+  //       );
+  //     },
+  //   );
+  // }
+  //   void checkBoxChanged(bool? value, int index) {
+  //   setState(() {
+  //     db.toDoList[index][1] = !db.toDoList[index][1];
+  //   });
+  //   db.updateDataBase();
+  // }
+
+  //  void saveNewTask() {
+  //   setState(() {
+  //     db.toDoList.add([_controller.text, false]);
+  //     _controller.clear();
+  //   });
+  //   Navigator.of(context).pop();
+  //   db.updateDataBase();
+  // }
+
+  void deleteTask(int index) {
+    setState(() {
+      todolist.removeAt(index);
+    });
+    // updateDataBase();
+  }
+
+  // void checkbox(bool? value, int index) {
+  //   setState(() {
+  //     todolist[index][1] = value ?? false;
   //   });
   // }
-  void deletetask(int index) {
-    todolist.removeAt(index);
-  }
+
+  // void editTask(int index) {
+  //   TextEditingController taskController =
+  //       TextEditingController(text: todolist[index]);
+
+  //   showDialog(
+  //     context: context,
+  //     builder: (context) {
+  //       return AlertDialog(
+  //         title: Text('Edit Task'),
+  //         content: TextField(
+  //           controller: taskController,
+  //           decoration: InputDecoration(labelText: 'Task Name'),
+  //         ),
+  //         actions: [
+  //           ElevatedButton(
+  //             onPressed: () {
+  //               Navigator.of(context).pop();
+  //             },
+  //             child: Text('Cancel'),
+  //           ),
+  //           ElevatedButton(
+  //             onPressed: () {
+  //               editTaskName(index, taskController.text);
+  //               Navigator.of(context).pop();
+  //             },
+  //             child: Text('Save'),
+  //           ),
+  //         ],
+  //       );
+  //     },
+  //   );
+  // }
+
+  // void editTaskName(int index, String newTaskName) {
+  //   setState(() {
+  //     todolist[index] = newTaskName;
+  //   });
+  // }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color.fromARGB(244, 229, 237, 242),
+      backgroundColor: Color.fromARGB(255, 244, 244, 244),
       body: ListView(
         children: [
           User(),
@@ -41,7 +159,7 @@ class _WeekTaskState extends State<WeekTask> {
           const Padding(padding: EdgeInsets.all(20)),
           Container(
             decoration: BoxDecoration(
-                color: const Color.fromRGBO(208, 198, 198, 0.906),
+                // color: Color.fromARGB(231, 255, 245, 245),
                 borderRadius: BorderRadius.circular(40)),
             // color: Colors.amber,
             height: MediaQuery.of(context).size.height,
@@ -51,7 +169,17 @@ class _WeekTaskState extends State<WeekTask> {
                   return ToDoCon(
                     taskname: todolist[index],
                     taskcomplete: false,
-                    deletefun: (context) => deletetask(index),
+                    onchanged: (bool? value) {},
+                    deletefun: (context) => deleteTask(index),
+                    editfunc: (context) {
+                      edittask(index);
+                      deleteTask(index);
+                    },
+
+                    // taskname: todolist[index][0],
+                    // tasknompleted: todolist[index][1],
+                    // onChanged: (value) => checkbox(value, index),
+                    // deleteFunction: (context) => deleteTask(index),
                   );
                 }),
           ),
