@@ -23,8 +23,6 @@ class _Main_ScreenState extends State<Main_Screen> {
   ];
   final navigationKey = GlobalKey<CurvedNavigationBarState>();
 
-
-  
   Shader _headerGradient(BuildContext context) {
     return const LinearGradient(
       colors: <Color>[
@@ -106,7 +104,7 @@ class _Main_ScreenState extends State<Main_Screen> {
                       ),
                     ),
                     floatingActionButtonLocation: FloatingActionButtonLocation
-                        .centerDocked, // Adjust the location as needed
+                        .endDocked, // Adjust the location as needed
                     bottomNavigationBar: Theme(
                         data: Theme.of(context).copyWith(
                             iconTheme: const IconThemeData(
