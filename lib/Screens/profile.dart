@@ -114,7 +114,7 @@ class _ProfileState extends State<Profile> {
                             fontWeight: FontWeight.w500),
                       ),
                       Padding(
-                        padding: EdgeInsets.only(left: _width * 0.42),
+                        padding: EdgeInsets.only(left: _width * 0.39),
                         child: IconButton(
                             onPressed: () async {
                               // await user?.updateDisplayName("Jane Q. User");
@@ -154,7 +154,7 @@ class _ProfileState extends State<Profile> {
                             fontWeight: FontWeight.w500),
                       ),
                       Padding(
-                        padding: EdgeInsets.only(left: _width * 0.345),
+                        padding: EdgeInsets.only(left: _width * 0.32),
                         child: IconButton(
                             onPressed: () async {
                               // await user?.updatePassword(newPassword);
@@ -194,7 +194,7 @@ class _ProfileState extends State<Profile> {
                             fontWeight: FontWeight.w500),
                       ),
                       Padding(
-                        padding: EdgeInsets.only(left: _width * 0.28),
+                        padding: EdgeInsets.only(left: _width * 0.24),
                         child: IconButton(
                             onPressed: () async {
                               // await user?.updatePhotoURL("https://example.com/jane-q-user/profile.jpg");
