@@ -1,10 +1,12 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:firebase_auth/firebase_auth.dart';
+// import 'package:cloud_firestore/cloud_firestore.dart';
+// import 'package:firebase_auth/firebase_auth.dart';
+
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:intl/intl.dart';
 import 'package:todoapp/Screens/createtask.dart';
 import 'package:todoapp/widgets/todocontainer.dart';
+// import 'package:todoapp/widgets/todocontainer.dart';
 import 'package:todoapp/widgets/todolist.dart';
 
 class Home extends StatefulWidget {
@@ -68,7 +70,7 @@ class _HomeState extends State<Home> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  'Hey ',
+                  'Hey User',
                   style: GoogleFonts.montserrat(
                     textStyle: const TextStyle(
                       color: Colors.black,
@@ -263,6 +265,106 @@ class _HomeState extends State<Home> {
                         color: Colors.black,
                         fontSize: 25,
                         fontWeight: FontWeight.w600,
+
+                        // body: Column(
+                        //   crossAxisAlignment:
+                        //       CrossAxisAlignment.start, // Align children to the left
+                        //   children: [
+                        //     Padding(
+                        //       padding:
+                        //           const EdgeInsets.fromLTRB(32, 120, 0, 0), // Add left padding
+                        //       child: Text(
+                        //         "Category",
+                        //         style: GoogleFonts.montserrat(
+                        //           textStyle: const TextStyle(
+                        //             color: Colors.black,
+                        //             fontSize: 25,
+                        //             fontWeight: FontWeight.w600,
+                        //           ),
+                        //         ),
+                        //       ),
+                        //     ),
+                        //     Padding(
+                        //       padding: const EdgeInsets.fromLTRB(20, 12, 0, 0),
+                        //       child: Container(
+                        //         height: 150,
+                        //         child: SingleChildScrollView(
+                        //           scrollDirection: Axis.horizontal,
+                        //           child: Row(
+                        //             mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        //             children: [
+                        //               Padding(
+                        //                   padding: const EdgeInsets.all(12.0),
+                        //                   child: Container(
+                        //                     decoration: const BoxDecoration(
+                        //                         borderRadius:
+                        //                             BorderRadius.all(Radius.circular(15)),
+                        //                         gradient: LinearGradient(
+                        //                             begin: Alignment.topCenter,
+                        //                             end: Alignment.bottomCenter,
+                        //                             colors: [
+                        //                               Color.fromARGB(255, 250, 140, 119),
+                        //                               Color.fromARGB(255, 243, 48, 96),
+                        //                             ])),
+                        //                     width: 95,
+                        //                     height: 141,
+                        //                     child: Center(
+                        //                       child: TextButton(
+                        //                           onPressed: () {},
+                        //                           child: Text(
+                        //                             'Shopping',
+                        //                             style: TextStyle(color: Colors.white),
+                        //                           )),
+                        //                     ),
+                        //                   )),
+                        //               Padding(
+                        //                   padding: const EdgeInsets.all(12.0),
+                        //                   child: Container(
+                        //                     decoration: const BoxDecoration(
+                        //                         borderRadius:
+                        //                             BorderRadius.all(Radius.circular(15)),
+                        //                         gradient: LinearGradient(
+                        //                             begin: Alignment.topCenter,
+                        //                             end: Alignment.bottomCenter,
+                        //                             colors: [
+                        //                               Color.fromARGB(255, 250, 140, 119),
+                        //                               Color.fromARGB(255, 243, 48, 96),
+                        //                             ])),
+                        //                     width: 95,
+                        //                     height: 141,
+                        //                     child: Center(
+                        //                       child: TextButton(
+                        //                           onPressed: () {},
+                        //                           child: Text(
+                        //                             'Personal',
+                        //                             style: TextStyle(color: Colors.white),
+                        //                           )),
+                        //                     ),
+                        //                   )),
+                        //               Padding(
+                        //                 padding: const EdgeInsets.all(12.0),
+                        //                 child: Container(
+                        //                   decoration: const BoxDecoration(
+                        //                       borderRadius:
+                        //                           BorderRadius.all(Radius.circular(15)),
+                        //                       gradient: LinearGradient(
+                        //                           begin: Alignment.topCenter,
+                        //                           end: Alignment.bottomCenter,
+                        //                           colors: [
+                        //                             Color.fromARGB(255, 250, 140, 119),
+                        //                             Color.fromARGB(255, 243, 48, 96),
+                        //                           ])),
+                        //                   width: 95,
+                        //                   height: 141,
+                        //                   child: Center(
+                        //                     child: TextButton(
+                        //                         onPressed: () {},
+                        //                         child: Text(
+                        //                           'Work',
+                        //                           style: TextStyle(color: Colors.white),
+                        //                         )),
+                        //                   ),
+                        //                 ),
                       ),
                     ),
                   ),
