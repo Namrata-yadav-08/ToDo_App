@@ -55,7 +55,7 @@ add_library(flutter_wrapper_plugin STATIC
   ${CPP_WRAPPER_SOURCES_CORE}
   ${CPP_WRAPPER_SOURCES_PLUGIN}
 )
-apply_standard_settings(flutter_wrapper_plugin)
+# apply_standard_settings(flutter_wrapper_plugin)
 set_target_properties(flutter_wrapper_plugin PROPERTIES
   POSITION_INDEPENDENT_CODE ON)
 set_target_properties(flutter_wrapper_plugin PROPERTIES
@@ -102,3 +102,4 @@ add_custom_target(flutter_assemble DEPENDS
   ${CPP_WRAPPER_SOURCES_PLUGIN}
   ${CPP_WRAPPER_SOURCES_APP}
 )
+set(CMAKE_BINARY_DIR ${CMAKE_SOURCE_DIR}/BUILD/WINDOWS)
