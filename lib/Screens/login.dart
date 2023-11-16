@@ -125,7 +125,7 @@ class _LoginState extends State<Login> {
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
               const Padding(padding: EdgeInsets.only(top: 10)),
-              buildcircl(context),
+              // buildcircl(context),
               _header(context),
               _inputField(context),
               Row(mainAxisAlignment: MainAxisAlignment.end, children: [
