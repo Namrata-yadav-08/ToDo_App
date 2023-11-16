@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:todoapp/Screens/WeekTask.dart';
-import 'package:todoapp/Screens/focus.dart';
 import 'package:todoapp/Screens/home.dart';
 import 'package:todoapp/Screens/profile.dart';
 
@@ -15,12 +14,7 @@ class Main_Screen extends StatefulWidget {
 
 class _Main_ScreenState extends State<Main_Screen> {
   int _index = 0;
-  final screens = [
-    const Home(),
-    const WeekTask(),
-    const InFocus(),
-    const Profile()
-  ];
+  final screens = [const Home(), const WeekTask(), const Profile()];
   final navigationKey = GlobalKey<CurvedNavigationBarState>();
 
   Shader _headerGradient(BuildContext context) {
@@ -38,10 +32,6 @@ class _Main_ScreenState extends State<Main_Screen> {
     final items = <Widget>[
       const Icon(FontAwesomeIcons.houseChimneyWindow, size: 25),
       const Icon(FontAwesomeIcons.calendarDays, size: 25),
-      const SizedBox(
-        width: 20,
-      ),
-      const Icon(FontAwesomeIcons.solidClock, size: 25),
       const Icon(FontAwesomeIcons.userLarge, size: 25),
     ];
     final height = MediaQuery.of(context).size.height;
@@ -56,7 +46,7 @@ class _Main_ScreenState extends State<Main_Screen> {
             top: false,
             child: ClipRect(
                 child: Scaffold(
-                    backgroundColor: const Color.fromARGB(255, 19, 19, 21),
+                    backgroundColor: const Color.fromARGB(255, 244, 244, 244),
                     extendBody: true,
                     extendBodyBehindAppBar: true,
                     body: screens[_index],
@@ -104,7 +94,7 @@ class _Main_ScreenState extends State<Main_Screen> {
                       ),
                     ),
                     floatingActionButtonLocation: FloatingActionButtonLocation
-                        .endDocked, // Adjust the location as needed
+                        .endFloat, // Adjust the location as needed
                     bottomNavigationBar: Theme(
                         data: Theme.of(context).copyWith(
                             iconTheme: const IconThemeData(
