@@ -120,9 +120,10 @@ class _LoginState extends State<Login> {
       // backgroundColor: Colors.black,
       body: ListView(children: [
         Container(
+          margin: EdgeInsets.all(20),
           // margin: EdgeInsets.all(24),
           child: Column(
-            mainAxisAlignment: MainAxisAlignment.spaceAround,
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
               const Padding(padding: EdgeInsets.only(top: 10)),
               buildcircl(context),
@@ -313,7 +314,7 @@ class _LoginState extends State<Login> {
             style: ElevatedButton.styleFrom(
               // shape: const StadiumBorder(),
               shape: const ContinuousRectangleBorder(),
-              backgroundColor: const Color.fromRGBO(134, 135, 231, 0.5),
+              backgroundColor: const Color.fromARGB(255, 255, 100, 125),
 
               padding: const EdgeInsets.symmetric(vertical: 16),
             ),
@@ -437,8 +438,6 @@ class _LoginState extends State<Login> {
   //   );
   // }
   Widget buildcircl(BuildContext context) {
-    return const CircleAvatar(
-      radius: 70,
-    );
+    return Image.asset("assets/images/2.png");
   }
 }

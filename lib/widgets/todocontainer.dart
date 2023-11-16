@@ -58,9 +58,13 @@ class _ToDoConState extends State<ToDoCon> {
                     Color.fromRGBO(255, 100, 125, 1)
                   ]),
               borderRadius: BorderRadius.circular(13)),
+          padding: EdgeInsets.all(9),
           child: Row(
             children: [
-              Text(widget.taskname),
+              Text(
+                widget.taskname,
+                style: TextStyle(color: Colors.white, fontSize: 20),
+              ),
               // Checkbox(value: taskcomplete, onChanged:onchanged )
             ],
           ),
