@@ -3,7 +3,8 @@
         {
             "name": "Win32",
             "includePath": [
-                "${default}"
+                "${default}",
+                "C:/Users/namra/AppData/Local/Pub/Cache/hosted/pub.dev/firebase_auth-4.13.0/windows/include"
             ],
             "defines": [
                 "_DEBUG",
