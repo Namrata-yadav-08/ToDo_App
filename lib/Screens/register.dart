@@ -317,7 +317,7 @@ class _RegisterState extends State<Register> {
             style: ElevatedButton.styleFrom(
               // shape: const StadiumBorder(),
               shape: const ContinuousRectangleBorder(),
-              backgroundColor: const Color.fromRGBO(134, 135, 231, 0.5),
+              backgroundColor: const Color.fromARGB(255, 255, 100, 125),
 
               padding: const EdgeInsets.symmetric(vertical: 16),
             ),
