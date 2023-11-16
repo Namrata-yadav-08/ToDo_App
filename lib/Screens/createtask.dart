@@ -26,7 +26,7 @@ class createtaskState extends State<createtask> {
     // Navigate to the AddTaskScreen and wait for a result
     final result = await Navigator.push(
       context,
-      MaterialPageRoute(builder: (context) => WeekTask()),
+      MaterialPageRoute(builder: (context) => createtask()),
     );
 
     // Check if the result is not null (user added a task)
@@ -63,7 +63,7 @@ class createtaskState extends State<createtask> {
                   // height: 22,
                   margin: const EdgeInsets.only(top: 26, left: 26),
                   child: const Text(
-                    'TASK TITLE',
+                    'TASK NAME',
                     style: TextStyle(fontSize: 15),
                   ),
                 ),
@@ -71,140 +71,154 @@ class createtaskState extends State<createtask> {
                   padding: const EdgeInsets.all(18),
                   child: TextField(
                     controller: taskname,
-                  ),
-                ),
-                Row(
-                  children: [DateContainers()],
-                ),
-                Row(
-                  // mainAxisSize: MainAxisSize.max,
-                  children: [
-                    Container(
-                      width: 240,
-                      margin: const EdgeInsets.all(18),
-                      child: TextField(
-                        decoration: InputDecoration(
-                          hintText: starttime,
-                          prefixIcon: IconButton(
-                              onPressed: () {
-                                // onpressed;
-                                gettime(isstarttime: true);
-                              },
-                              icon: const Icon(Icons.timer)),
-                          border: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(5)),
-                        ),
-                      ),
-                    ),
-
-                    // timecontainer(starttime, gettime(isstarttime: true))
-                  ],
-                ),
-
-                Container(
-                  width: 240,
-                  margin: const EdgeInsets.all(18),
-                  child: TextField(
                     decoration: InputDecoration(
-                      hintText: endtime,
-                      prefixIcon: IconButton(
-                          onPressed: () {
-                            // onpressed;
-                            gettime(isstarttime: false);
-                          },
-                          icon: const Icon(Icons.timer)),
+                      labelText: 'Task Name',
+                      // hintText: "Task Name",
                       border: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(5)),
+                        borderRadius: BorderRadius.circular(12.0),
+                      ),
+                      filled: true,
+                      fillColor: Colors.white,
+                      focusedBorder: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(12.0),
+                        borderSide: BorderSide(color: Colors.blue, width: 2.0),
+                      ),
                     ),
                   ),
                 ),
-                // timecontainer(endtime),
-                Container(
-                    // width: 115,
-                    // height: 22,
-                    margin: const EdgeInsets.only(top: 32, left: 26),
-                    child: const Text(
-                        textAlign: TextAlign.left,
-                        'Description',
-                        style: TextStyle(fontSize: 18))),
-                Padding(
-                  padding: const EdgeInsets.all(19),
-                  child: TextField(
-                    controller: description,
-                  ),
-                ),
-                Container(
-                    height: 18,
-                    width: 89,
-                    margin: const EdgeInsets.only(top: 47, left: 26),
-                    child: const Text('CATEGORY')),
-                Padding(
-                    padding: const EdgeInsets.fromLTRB(16, 12, 0, 0),
-                    child: Container(
-                      height: 45,
-                      child: SingleChildScrollView(
-                        scrollDirection: Axis.horizontal,
-                        child: Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                            children: [
-                              BuildCategory("Work"),
-                              BuildCategory("Personal"),
-                              BuildCategory("Office"),
-                              BuildCategory("Shopping"),
-                              BuildCategory("Others"),
 
-                              //   Container(
-                              //       margin: EdgeInsets.only(top: 25),
-                              //       decoration: BoxDecoration(
-                              //           gradient: LinearGradient(colors: [
-                              //         Color.fromARGB(1, 254, 152, 142),
-                              //         Color.fromARGB(1, 255, 100, 125)
-                              //       ])),
-                              //       child: Text(
-                              //         'LEARNING',
-                              //         style: TextStyle(fontSize: 20, fontWeight: FontWeight.w500),
-                              //       )),
-                              //   Container(
-                              //       margin: EdgeInsets.only(top: 25),
-                              //       decoration: BoxDecoration(
-                              //           gradient: LinearGradient(colors: [
-                              //         Color.fromARGB(1, 254, 152, 142),
-                              //         Color.fromARGB(1, 255, 100, 125)
-                              //       ])),
-                              //       child: Text(
-                              //         'MEETING',
-                              //         style: TextStyle(fontSize: 20, fontWeight: FontWeight.w500),
-                              //       )),
-                              // ]),
-                              // Align(
-                              //   alignment: FractionalOffset.center,
-                              //   child: ElevatedButton(
-                              //     child: Container(
-                              //         margin: const EdgeInsets.only(top: 30),
-                              //         decoration: const BoxDecoration(
-                              //             boxShadow: [],
-                              //             gradient: LinearGradient(
-                              //               begin: Alignment.topCenter,
-                              //               end: Alignment.bottomCenter,
-                              //               colors: [
-                              //                 Color.fromRGBO(254, 152, 142, 1),
-                              //                 Color.fromRGBO(255, 100, 125, 1)
-                              //               ],
-                              //             )),
-                              //         child: const Text(
-                              //           'CREATE TASK',
-                              //           textAlign: TextAlign.center,
-                              //           style: TextStyle(
-                              //             fontSize: 28,
-                              //             fontWeight: FontWeight.w500,
-                              //           ),
-                              //         )),
-                              //     onPressed: () {},
-                              //   ),
-                              // ),
-                            ]),
-                      ),
-                    )),
+                // Row(
+                //   children: [DateContainers()],
+                // ),
+                // Row(
+                //   // mainAxisSize: MainAxisSize.max,
+                //   children: [
+                //     Container(
+                //       width: 240,
+                //       margin: const EdgeInsets.all(18),
+                //       child: TextField(
+                //         decoration: InputDecoration(
+                //           hintText: starttime,
+                //           prefixIcon: IconButton(
+                //               onPressed: () {
+                //                 // onpressed;
+                //                 gettime(isstarttime: true);
+                //               },
+                //               icon: const Icon(Icons.timer)),
+                //           border: OutlineInputBorder(
+                //               borderRadius: BorderRadius.circular(5)),
+                //         ),
+                //       ),
+                //     ),
+
+                //     // timecontainer(starttime, gettime(isstarttime: true))
+                //   ],
+                // ),
+
+                // Container(
+                //   width: 240,
+                //   margin: const EdgeInsets.all(18),
+                //   child: TextField(
+                //     decoration: InputDecoration(
+                //       hintText: endtime,
+                //       prefixIcon: IconButton(
+                //           onPressed: () {
+                //             // onpressed;
+                //             gettime(isstarttime: false);
+                //           },
+                //           icon: const Icon(Icons.timer)),
+                //       border: OutlineInputBorder(
+                //           borderRadius: BorderRadius.circular(5)),
+                //     ),
+                //   ),
+                // ),
+                // timecontainer(endtime),
+                // Container(
+                //     // width: 115,
+                //     // height: 22,
+                //     margin: const EdgeInsets.only(top: 32, left: 26),
+                //     child: const Text(
+                //         textAlign: TextAlign.left,
+                //         'Description',
+                //         style: TextStyle(fontSize: 18))),
+                // Padding(
+                //   padding: const EdgeInsets.all(19),
+                //   child: TextField(
+                //     controller: description,
+                //   ),
+                // ),
+                // Container(
+                //     height: 18,
+                //     width: 89,
+                //     margin: const EdgeInsets.only(top: 47, left: 26),
+                //     child: const Text('CATEGORY')),
+                // Padding(
+                //     padding: const EdgeInsets.fromLTRB(16, 12, 0, 0),
+                //     child: Container(
+                //       height: 45,
+                //       child: SingleChildScrollView(
+                //         scrollDirection: Axis.horizontal,
+                //         child: Row(
+                //             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                //             children: [
+                //               BuildCategory("Work"),
+                //               BuildCategory("Personal"),
+                //               BuildCategory("Office"),
+                //               BuildCategory("Shopping"),
+                //               BuildCategory("Others"),
+
+                //               //   Container(
+                //               //       margin: EdgeInsets.only(top: 25),
+                //               //       decoration: BoxDecoration(
+                //               //           gradient: LinearGradient(colors: [
+                //               //         Color.fromARGB(1, 254, 152, 142),
+                //               //         Color.fromARGB(1, 255, 100, 125)
+                //               //       ])),
+                //               //       child: Text(
+                //               //         'LEARNING',
+                //               //         style: TextStyle(fontSize: 20, fontWeight: FontWeight.w500),
+                //               //       )),
+                //               //   Container(
+                //               //       margin: EdgeInsets.only(top: 25),
+                //               //       decoration: BoxDecoration(
+                //               //           gradient: LinearGradient(colors: [
+                //               //         Color.fromARGB(1, 254, 152, 142),
+                //               //         Color.fromARGB(1, 255, 100, 125)
+                //               //       ])),
+                //               //       child: Text(
+                //               //         'MEETING',
+                //               //         style: TextStyle(fontSize: 20, fontWeight: FontWeight.w500),
+                //               //       )),
+                //               // ]),
+                //               // Align(
+                //               //   alignment: FractionalOffset.center,
+                //               //   child: ElevatedButton(
+                //               //     child: Container(
+                //               //         margin: const EdgeInsets.only(top: 30),
+                //               //         decoration: const BoxDecoration(
+                //               //             boxShadow: [],
+                //               //             gradient: LinearGradient(
+                //               //               begin: Alignment.topCenter,
+                //               //               end: Alignment.bottomCenter,
+                //               //               colors: [
+                //               //                 Color.fromRGBO(254, 152, 142, 1),
+                //               //                 Color.fromRGBO(255, 100, 125, 1)
+                //               //               ],
+                //               //             )),
+                //               //         child: const Text(
+                //               //           'CREATE TASK',
+                //               //           textAlign: TextAlign.center,
+                //               //           style: TextStyle(
+                //               //             fontSize: 28,
+                //               //             fontWeight: FontWeight.w500,
+                //               //           ),
+                //               //         )),
+                //               //     onPressed: () {},
+                //               //   ),
+                //               // ),
+                //             ]),
+                //       ),
+                //     )),
                 const Padding(padding: EdgeInsets.all(15)),
 
                 Center(
