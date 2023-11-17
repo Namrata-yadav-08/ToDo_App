@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:intl/intl.dart';
 import 'package:todoapp/Screens/createtask.dart';
 import 'package:todoapp/Screens/register.dart';
@@ -145,61 +146,197 @@ class _WeekTaskState extends State<WeekTask> {
   //     todolist[index] = newTaskName;
   //   });
   // }
+  DateTime _currentMonth = DateTime.now();
 
+  void _previousMonth() {
+    setState(() {
+      _currentMonth = DateTime(_currentMonth.year, _currentMonth.month - 1);
+    });
+  }
+
+  void _nextMonth() {
+    setState(() {
+      _currentMonth = DateTime(_currentMonth.year, _currentMonth.month + 1);
+    });
+  }
+
+  String? userImage;
   @override
   Widget build(BuildContext context) {
+    final currentDate = DateTime.now();
+    final formattedDate = DateFormat('MMM dd, y').format(currentDate);
     return Scaffold(
       backgroundColor: Color.fromARGB(255, 244, 244, 244),
-      body: ListView(
-        children: [
-          User(),
-          currentdate(),
-          datepicker(),
-//           // ...
-// GradientDatePicker(
-//   initialDate: DateTime.now(),
-//   onDateChange: (date) {
-//     // Handle date change
-//   },
-// ),
-// // ...
-
-          // Row(),
-          const Padding(padding: EdgeInsets.all(20)),
-          Container(
-            decoration: BoxDecoration(
-                // color: Color.fromARGB(231, 255, 245, 245),
-                borderRadius: BorderRadius.circular(40)),
-            // color: Colors.amber,
-            height: MediaQuery.of(context).size.height,
-            child: ListView.builder(
-                itemCount: todolist.length,
-                itemBuilder: (context, index) {
-                  return ToDoCon(
-                    taskname: todolist[index],
-                    taskcomplete: false,
-                    onchanged: (bool? value) {},
-                    deletefun: (context) => deleteTask(index),
-                    editfunc: (context) {
-                      edittask(index);
-                      deleteTask(index);
-                    },
-
-                    // taskname: todolist[index][0],
-                    // tasknompleted: todolist[index][1],
-                    // onChanged: (value) => checkbox(value, index),
-                    // deleteFunction: (context) => deleteTask(index),
-                  );
-                }),
+      extendBody: true,
+      extendBodyBehindAppBar: true,
+      appBar: AppBar(
+        automaticallyImplyLeading: false,
+        toolbarHeight: 77,
+        elevation: 0,
+        backgroundColor: const Color.fromARGB(255, 244, 244, 244),
+        title: Padding(
+          padding: const EdgeInsets.fromLTRB(11, 20, 0, 0),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(
+                'Hey User',
+                style: GoogleFonts.montserrat(
+                  textStyle: const TextStyle(
+                    color: Colors.black,
+                    fontSize: 25,
+                    fontWeight: FontWeight.w600,
+                  ),
+                ),
+              ),
+              const SizedBox(
+                height: 6,
+              ),
+              Text(
+                '$formattedDate',
+                style: const TextStyle(
+                  fontSize: 12,
+                  color: Color.fromARGB(255, 164, 164, 164),
+                ),
+              ),
+            ],
           ),
-          // FloatingActionButton(
-          //   child: Text("register"),
-          //   onPressed: () {
-          //     Navigator.push(
-          //         context, MaterialPageRoute(builder: (context) => Register()));
-          //   },
-          // )
+        ),
+        actions: [
+          Padding(
+            padding: EdgeInsets.fromLTRB(0, 28, 26, 0),
+            child: CircleAvatar(
+              backgroundImage: userImage != null && userImage!.isNotEmpty
+                  ? NetworkImage(userImage!) // User's image if available
+                  : AssetImage('assets/images/Group 171 (2).png')
+                      as ImageProvider<Object>,
+              radius: 24,
+            ),
+          )
         ],
+      ),
+      body: Padding(
+        padding: const EdgeInsets.only(left: 15),
+        child: ListView(
+          children: [
+            Row(
+              children: [
+                Padding(
+                  padding: const EdgeInsets.all(13),
+                  child: Text(
+                    "Week's Task",
+                    style: GoogleFonts.inter(
+                      textStyle: const TextStyle(
+                        color: Colors.black,
+                        fontSize: 22,
+                        fontWeight: FontWeight.w700,
+                      ),
+                    ),
+                  ),
+                ),
+                Spacer(),
+                Padding(
+                  padding: const EdgeInsets.only(right: 12),
+                  child: Container(
+                    color: Colors.white,
+                    // width: 71,
+                    // height: 60,
+                    child: Row(
+                      children: [
+                        Container(
+                          decoration: BoxDecoration(
+                              shape: BoxShape.circle,
+                              color: Color.fromARGB(255, 76, 75, 254)),
+                          width: 25,
+                          height: 25,
+                          child: Center(
+                            child: IconButton(
+                              icon: Icon(
+                                Icons.arrow_back_ios_rounded,
+                                size: 11,
+                                color: Colors.white,
+                              ),
+                              onPressed: _previousMonth,
+                            ),
+                          ),
+                        ),
+                        Text(
+                          DateFormat.MMM().format(_currentMonth),
+                          style: TextStyle(
+                              fontSize: 15, fontWeight: FontWeight.bold),
+                        ),
+                        Container(
+                            decoration: BoxDecoration(
+                                shape: BoxShape.circle,
+                                color: Color.fromARGB(255, 76, 75, 254)),
+                            width: 25,
+                            height: 25,
+                            child: Center(
+                              child: IconButton(
+                                icon: Icon(
+                                  Icons.arrow_forward_ios_rounded,
+                                  size: 11,
+                                  color: Colors.white,
+                                ),
+                                onPressed: _nextMonth,
+                              ),
+                            ))
+                      ],
+                    ),
+                  ),
+                ),
+              ],
+            ),
+            // User(),
+            // currentdate(),
+            datepicker(),
+            //           // ...
+            // GradientDatePicker(
+            //   initialDate: DateTime.now(),
+            //   onDateChange: (date) {
+            //     // Handle date change
+            //   },
+            // ),
+            // // ...
+
+            // Row(),
+
+            Container(
+              decoration: BoxDecoration(
+                  // color: Color.fromARGB(231, 255, 245, 245),
+                  borderRadius: BorderRadius.circular(40)),
+              // color: Colors.amber,
+              height: MediaQuery.of(context).size.height,
+              child: ListView.builder(
+                  itemCount: todolist.length,
+                  itemBuilder: (context, index) {
+                    return ToDoCon(
+                      taskname: todolist[index],
+                      taskcomplete: false,
+                      onchanged: (bool? value) {},
+                      deletefun: (context) => deleteTask(index),
+                      editfunc: (context) {
+                        edittask(index);
+                        deleteTask(index);
+                      },
+
+                      // taskname: todolist[index][0],
+                      // tasknompleted: todolist[index][1],
+                      // onChanged: (value) => checkbox(value, index),
+                      // deleteFunction: (context) => deleteTask(index),
+                    );
+                  }),
+            ),
+
+            // FloatingActionButton(
+            //   child: Text("register"),
+            //   onPressed: () {
+            //     Navigator.push(
+            //         context, MaterialPageRoute(builder: (context) => Register()));
+            //   },
+            // )
+          ],
+        ),
       ),
     );
   }
@@ -272,10 +409,10 @@ class _WeekTaskState extends State<WeekTask> {
 
               selectionColor: const Color.fromRGBO(254, 155, 143, 1),
               selectedTextColor: const Color.fromRGBO(255, 255, 255, 1),
-              dateTextStyle: const TextStyle(
-                  fontSize: 16,
-                  fontWeight: FontWeight.w600,
-                  color: Colors.grey),
+              dateTextStyle: GoogleFonts.inter(
+                  fontSize: 15,
+                  fontWeight: FontWeight.w700,
+                  color: Colors.black),
               onDateChange: (date) {
                 selecteddate = date;
               },
