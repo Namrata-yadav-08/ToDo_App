@@ -1,15 +1,4 @@
-// import 'package:firebase_auth/firebase_auth.dart';
-// import 'package:firebase_core/firebase_core.dart';
-// import 'package:flutter/material.dart';
-// import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
-
-// class ForgotPassword extends StatefulWidget {
-//   const ForgotPassword({super.key});
-
-//   @override
-//   State<ForgotPassword> createState() => _ForgotPasswordState();
-// }
 
 // class _ForgotPasswordState extends State<ForgotPassword> {
 //   final emailtext = TextEditingController();
@@ -242,6 +231,17 @@ class _ForgotPasswordState extends State<ForgotPassword> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        leading: Padding(
+            padding: const EdgeInsets.only(top: 22), // Adjust padding as needed
+            child: IconButton(
+              icon: Icon(
+                Icons.arrow_back_ios_new_rounded,
+                color: Colors.black,
+              ), // Replace with your icon
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+            )),
         title: Center(
             child: Padding(
                 padding: const EdgeInsets.only(top: 24),
@@ -254,8 +254,6 @@ class _ForgotPasswordState extends State<ForgotPassword> {
                 ))),
         backgroundColor: Colors.transparent,
         elevation: 0,
-        iconTheme: IconThemeData(color: Colors.black),
-        automaticallyImplyLeading: true,
       ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
@@ -300,10 +298,16 @@ class _ForgotPasswordState extends State<ForgotPassword> {
             SizedBox(height: 20),
             ElevatedButton(
               style: ButtonStyle(
+                  minimumSize: MaterialStateProperty.all(
+                      Size(170, 57)), // Adjust width and height
+                  padding: MaterialStateProperty.all(EdgeInsets.all(8)),
                   backgroundColor: MaterialStateProperty.all<Color>(
                       Color.fromARGB(255, 245, 69, 101))),
               onPressed: _resetPassword,
-              child: Text('Reset Password'),
+              child: Text(
+                'Reset Password',
+                style: TextStyle(fontSize: 18),
+              ),
             ),
           ],
         ),

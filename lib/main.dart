@@ -1,7 +1,8 @@
 // ignore_for_file: non_constant_identifier_names
 
 import 'package:flutter/material.dart';
-import 'package:get/get_navigation/src/root/get_material_app.dart';
+
+import 'package:todoapp/Screens/SplashScreen.dart';
 import 'package:todoapp/Screens/WeekTask.dart';
 
 import 'package:todoapp/Screens/auth_page.dart';
@@ -16,7 +17,6 @@ import 'package:todoapp/Screens/main_screen.dart';
 import 'package:todoapp/Screens/profile.dart';
 import 'package:todoapp/Screens/register.dart';
 import 'package:todoapp/Screens/task_list.dart';
-import 'package:todoapp/widgets/const.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'firebase_options.dart';
 
@@ -35,10 +35,11 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      initialRoute: 'auth_page',
+      initialRoute: 'splashscreen',
       routes: {
         'main_screen': (context) => const Main_Screen(),
         'home': (context) => const Home(),
+        'splashscreen': (context) => const SplashScreen(),
         'profile': (context) => const Profile(),
         'login': (context) => Login(
               onTap: () {},
