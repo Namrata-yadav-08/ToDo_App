@@ -1,14 +1,19 @@
 // import 'package:cloud_firestore/cloud_firestore.dart';
 // import 'package:firebase_auth/firebase_auth.dart';
 
+import 'dart:io';
+
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:intl/intl.dart';
 import 'package:todoapp/Screens/createtask.dart';
+import 'package:todoapp/Screens/profile.dart';
 import 'package:todoapp/widgets/todocontainer.dart';
 // import 'package:todoapp/widgets/todocontainer.dart';
 import 'package:todoapp/widgets/todolist.dart';
 import 'package:flutter/services.dart';
+import 'user_controller.dart';
 
 class Home extends StatefulWidget {
   const Home({Key? key});
@@ -18,6 +23,37 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
+  User? user;
+  String? globalUserImage;
+
+  @override
+  void initState() {
+    super.initState();
+    globalUserImage = userController.userImage.value;
+    // Fetch the currently logged-in user
+    getUser();
+  }
+
+  Future<void> getUser() async {
+    User? currentUser = FirebaseAuth.instance.currentUser;
+    if (currentUser != null) {
+      setState(() {
+        user = currentUser;
+      });
+      // You can access user.email, user.displayName, user.photoURL, etc.
+    }
+  }
+
+  // void navigateToProfilePage() async {
+  //   final updatedUserImage = await Navigator.push(
+  //       context, MaterialPageRoute(builder: (context) => Profile()));
+  //   if (updatedUserImage != null) {
+  //     setState(() {
+  //       globalUserImage = updatedUserImage;
+  //     });
+  //   }
+  // }
+
   void edittask(index) async {
     // Navigate to the AddTaskScreen and wait for a result
     final result = await Navigator.push(
@@ -49,8 +85,6 @@ class _HomeState extends State<Home> {
     // updateDataBase();
   }
 
-  String? userImage;
-
   @override
   Widget build(BuildContext context) {
     final currentDate = DateTime.now();
@@ -70,7 +104,7 @@ class _HomeState extends State<Home> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  'Hey User',
+                  'Hey ${user?.displayName ?? 'User'}',
                   style: GoogleFonts.montserrat(
                     textStyle: const TextStyle(
                       color: Colors.black,
@@ -96,10 +130,12 @@ class _HomeState extends State<Home> {
             Padding(
               padding: EdgeInsets.fromLTRB(0, 28, 26, 0),
               child: CircleAvatar(
-                backgroundImage: userImage != null && userImage!.isNotEmpty
-                    ? NetworkImage(userImage!) // User's image if available
-                    : AssetImage('assets/images/Group 171 (2).png')
-                        as ImageProvider<Object>,
+                backgroundImage:
+                    globalUserImage != null && globalUserImage!.isNotEmpty
+                        ? FileImage(
+                            File(globalUserImage!)) // User's image if available
+                        : AssetImage('assets/images/Group 171 (2).png')
+                            as ImageProvider<Object>,
                 radius: 24,
               ),
             )
@@ -143,7 +179,7 @@ class _HomeState extends State<Home> {
               ]),
 
               Padding(
-                padding: const EdgeInsets.fromLTRB(27, 12, 0, 0),
+                padding: const EdgeInsets.fromLTRB(13, 12, 0, 0),
                 child: Container(
                   height: 150,
                   child: SingleChildScrollView(

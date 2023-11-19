@@ -1,5 +1,8 @@
+import 'dart:io';
+
 import 'package:date_picker_timeline/date_picker_timeline.dart';
 import 'package:date_picker_timeline/extra/color.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -11,6 +14,7 @@ import 'package:todoapp/Screens/register.dart';
 import 'package:todoapp/widgets/text.dart';
 import 'package:todoapp/widgets/todocontainer.dart';
 import 'package:todoapp/widgets/todolist.dart';
+import 'user_controller.dart';
 
 class WeekTask extends StatefulWidget {
   const WeekTask({super.key});
@@ -20,6 +24,28 @@ class WeekTask extends StatefulWidget {
 }
 
 class _WeekTaskState extends State<WeekTask> {
+  User? user;
+
+  String? globalUserImage;
+
+  @override
+  void initState() {
+    super.initState();
+    globalUserImage = userController.userImage.value;
+    // Fetch the currently logged-in user
+    getUser();
+  }
+
+  Future<void> getUser() async {
+    User? currentUser = FirebaseAuth.instance.currentUser;
+    if (currentUser != null) {
+      setState(() {
+        user = currentUser;
+      });
+      // You can access user.email, user.displayName, user.photoURL, etc.
+    }
+  }
+
   DateTime selecteddate = DateTime.now();
   // List todolist = ["Makjjjjjjjjevg", "jghhhhhhhhj", "kjhgfd", "kjhgfddfghjk"];
 
@@ -160,7 +186,6 @@ class _WeekTaskState extends State<WeekTask> {
     });
   }
 
-  String? userImage;
   @override
   Widget build(BuildContext context) {
     final currentDate = DateTime.now();
@@ -180,7 +205,7 @@ class _WeekTaskState extends State<WeekTask> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
-                'Hey User',
+                'Hey ${user?.displayName ?? 'User'}',
                 style: GoogleFonts.montserrat(
                   textStyle: const TextStyle(
                     color: Colors.black,
@@ -206,44 +231,66 @@ class _WeekTaskState extends State<WeekTask> {
           Padding(
             padding: EdgeInsets.fromLTRB(0, 28, 26, 0),
             child: CircleAvatar(
-              backgroundImage: userImage != null && userImage!.isNotEmpty
-                  ? NetworkImage(userImage!) // User's image if available
-                  : AssetImage('assets/images/Group 171 (2).png')
-                      as ImageProvider<Object>,
+              backgroundImage:
+                  globalUserImage != null && globalUserImage!.isNotEmpty
+                      ? FileImage(
+                          File(globalUserImage!)) // User's image if available
+                      : AssetImage('assets/images/Group 171 (2).png')
+                          as ImageProvider<Object>,
               radius: 24,
             ),
           )
         ],
       ),
-      body: Padding(
-        padding: const EdgeInsets.only(left: 15),
-        child: ListView(
-          children: [
-            Row(
-              children: [
-                Padding(
-                  padding: const EdgeInsets.all(13),
-                  child: Text(
-                    "Week's Task",
-                    style: GoogleFonts.inter(
-                      textStyle: const TextStyle(
-                        color: Colors.black,
-                        fontSize: 22,
-                        fontWeight: FontWeight.w700,
-                      ),
+      body: ListView(
+        children: [
+          Row(
+            children: [
+              Padding(
+                padding: const EdgeInsets.fromLTRB(28, 13, 13, 13),
+                child: Text(
+                  "Week's Task",
+                  style: GoogleFonts.inter(
+                    textStyle: const TextStyle(
+                      color: Colors.black,
+                      fontSize: 22,
+                      fontWeight: FontWeight.w700,
                     ),
                   ),
                 ),
-                Spacer(),
-                Padding(
-                  padding: const EdgeInsets.only(right: 12),
-                  child: Container(
-                    color: Colors.white,
-                    // width: 71,
-                    // height: 60,
-                    child: Row(
-                      children: [
-                        Container(
+              ),
+              Spacer(),
+              Padding(
+                padding: const EdgeInsets.only(right: 12),
+                child: Container(
+                  color: Colors.white,
+                  // width: 71,
+                  // height: 60,
+                  child: Row(
+                    children: [
+                      Container(
+                        decoration: BoxDecoration(
+                            shape: BoxShape.circle,
+                            color: Color.fromARGB(255, 76, 75, 254)),
+                        width: 25,
+                        height: 25,
+                        child: Center(
+                          child: IconButton(
+                            icon: Icon(
+                              Icons.arrow_back_ios_rounded,
+                              size: 11,
+                              color: Colors.white,
+                            ),
+                            onPressed: _previousMonth,
+                          ),
+                        ),
+                      ),
+                      Text(
+                        DateFormat.MMM().format(_currentMonth),
+                        style: TextStyle(
+                            fontSize: 15, fontWeight: FontWeight.bold),
+                      ),
+                      Container(
                           decoration: BoxDecoration(
                               shape: BoxShape.circle,
                               color: Color.fromARGB(255, 76, 75, 254)),
@@ -252,91 +299,68 @@ class _WeekTaskState extends State<WeekTask> {
                           child: Center(
                             child: IconButton(
                               icon: Icon(
-                                Icons.arrow_back_ios_rounded,
+                                Icons.arrow_forward_ios_rounded,
                                 size: 11,
                                 color: Colors.white,
                               ),
-                              onPressed: _previousMonth,
+                              onPressed: _nextMonth,
                             ),
-                          ),
-                        ),
-                        Text(
-                          DateFormat.MMM().format(_currentMonth),
-                          style: TextStyle(
-                              fontSize: 15, fontWeight: FontWeight.bold),
-                        ),
-                        Container(
-                            decoration: BoxDecoration(
-                                shape: BoxShape.circle,
-                                color: Color.fromARGB(255, 76, 75, 254)),
-                            width: 25,
-                            height: 25,
-                            child: Center(
-                              child: IconButton(
-                                icon: Icon(
-                                  Icons.arrow_forward_ios_rounded,
-                                  size: 11,
-                                  color: Colors.white,
-                                ),
-                                onPressed: _nextMonth,
-                              ),
-                            ))
-                      ],
-                    ),
+                          ))
+                    ],
                   ),
                 ),
-              ],
-            ),
-            // User(),
-            // currentdate(),
-            datepicker(),
-            //           // ...
-            // GradientDatePicker(
-            //   initialDate: DateTime.now(),
-            //   onDateChange: (date) {
-            //     // Handle date change
-            //   },
-            // ),
-            // // ...
+              ),
+            ],
+          ),
+          // User(),
+          // currentdate(),
+          datepicker(),
+          //           // ...
+          // GradientDatePicker(
+          //   initialDate: DateTime.now(),
+          //   onDateChange: (date) {
+          //     // Handle date change
+          //   },
+          // ),
+          // // ...
 
-            // Row(),
+          // Row(),
 
-            Container(
-              decoration: BoxDecoration(
-                  // color: Color.fromARGB(231, 255, 245, 245),
-                  borderRadius: BorderRadius.circular(40)),
-              // color: Colors.amber,
-              height: MediaQuery.of(context).size.height,
-              child: ListView.builder(
-                  itemCount: todolist.length,
-                  itemBuilder: (context, index) {
-                    return ToDoCon(
-                      taskname: todolist[index],
-                      taskcomplete: false,
-                      onchanged: (bool? value) {},
-                      deletefun: (context) => deleteTask(index),
-                      editfunc: (context) {
-                        edittask(index);
-                        deleteTask(index);
-                      },
+          Container(
+            decoration: BoxDecoration(
+                // color: Color.fromARGB(231, 255, 245, 245),
+                borderRadius: BorderRadius.circular(40)),
+            // color: Colors.amber,
+            height: MediaQuery.of(context).size.height,
+            child: ListView.builder(
+                itemCount: todolist.length,
+                itemBuilder: (context, index) {
+                  return ToDoCon(
+                    taskname: todolist[index],
+                    taskcomplete: false,
+                    onchanged: (bool? value) {},
+                    deletefun: (context) => deleteTask(index),
+                    editfunc: (context) {
+                      edittask(index);
+                      deleteTask(index);
+                    },
 
-                      // taskname: todolist[index][0],
-                      // tasknompleted: todolist[index][1],
-                      // onChanged: (value) => checkbox(value, index),
-                      // deleteFunction: (context) => deleteTask(index),
-                    );
-                  }),
-            ),
+                    // taskname: todolist[index][0],
+                    // tasknompleted: todolist[index][1],
+                    // onChanged: (value) => checkbox(value, index),
+                    // deleteFunction: (context) => deleteTask(index),
+                  );
+                }),
+          ),
 
-            // FloatingActionButton(
-            //   child: Text("register"),
-            //   onPressed: () {
-            //     Navigator.push(
-            //         context, MaterialPageRoute(builder: (context) => Register()));
-            //   },
-            // )
-          ],
-        ),
+          // FloatingActionButton(
+          //   child: Text("register"),
+          //   onPressed: () {
+          //     Navigator.push(
+          //         context, MaterialPageRoute(builder: (context) => Register()));
+          //   },
+          // )
+        ],
       ),
     );
   }
@@ -399,52 +423,55 @@ class _WeekTaskState extends State<WeekTask> {
             // )
           ],
         ),
-        child: Container(
-            margin: const EdgeInsets.only(top: 20),
-            child: DatePicker(
-              DateTime.now(),
-              height: 100,
-              width: 80,
-              initialSelectedDate: DateTime.now(),
+        child: Padding(
+          padding: const EdgeInsets.fromLTRB(17, 20, 17, 0),
+          child: Container(
 
-              selectionColor: const Color.fromRGBO(254, 155, 143, 1),
-              selectedTextColor: const Color.fromRGBO(255, 255, 255, 1),
-              dateTextStyle: GoogleFonts.inter(
-                  fontSize: 15,
-                  fontWeight: FontWeight.w700,
-                  color: Colors.black),
-              onDateChange: (date) {
-                selecteddate = date;
-              },
-              // dayContainerDecoration: BoxDecoration(
-              //   gradient: LinearGradient(
-              //     colors: [
-              //       Color.fromRGBO(254, 155, 143, 1),
-              //       Color.fromRGBO(255, 94, 77, 1),
-              //     ],
-              //     begin: Alignment.topLeft,
-              //     end: Alignment.bottomRight,
-              //   ),
-              //   borderRadius: BorderRadius.circular(16),
-              // ),
-            )));
+              // margin: const EdgeInsets.only(top: 20),
+              child: DatePicker(
+            DateTime.now(),
+            height: 85,
+            width: 50,
+            initialSelectedDate: DateTime.now(),
+
+            selectionColor: const Color.fromRGBO(254, 155, 143, 1),
+            selectedTextColor: const Color.fromRGBO(255, 255, 255, 1),
+            dateTextStyle: GoogleFonts.inter(
+                fontSize: 15, fontWeight: FontWeight.w700, color: Colors.black),
+            onDateChange: (date) {
+              selecteddate = date;
+            },
+
+            // dayContainerDecoration: BoxDecoration(
+            //   gradient: LinearGradient(
+            //     colors: [
+            //       Color.fromRGBO(254, 155, 143, 1),
+            //       Color.fromRGBO(255, 94, 77, 1),
+            //     ],
+            //     begin: Alignment.topLeft,
+            //     end: Alignment.bottomRight,
+            //   ),
+            //   borderRadius: BorderRadius.circular(16),
+            // ),
+          )),
+        ));
   }
 
-  Container User() {
-    return Container(
-      // color: Colors.amber,
-      // padding: EdgeInsets.all(15)
-      padding: const EdgeInsets.only(top: 30, left: 20),
-      // margin: EdgeInsets.all(20),
-      child: const CustomText(
-        text: "Hey User",
-        fontStyle: null,
-        color: Colors.black,
-        fontSize: 30,
-        fontweigth: FontWeight.bold,
-      ),
-    );
-  }
+  // Container User() {
+  //   return Container(
+  //     // color: Colors.amber,
+  //     // padding: EdgeInsets.all(15)
+  //     padding: const EdgeInsets.only(top: 30, left: 20),
+  //     // margin: EdgeInsets.all(20),
+  //     child: const CustomText(
+  //       text: "Hey User",
+  //       fontStyle: null,
+  //       color: Colors.black,
+  //       fontSize: 30,
+  //       fontweigth: FontWeight.bold,
+  //     ),
+  //   );
+  // }
 
   // Widget taskcontainer(BuildContext context) => Container(child: );
 }

@@ -35,7 +35,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      initialRoute: 'main_screen',
+      initialRoute: 'auth_page',
       routes: {
         'main_screen': (context) => const Main_Screen(),
         'home': (context) => const Home(),
@@ -51,7 +51,7 @@ class MyApp extends StatelessWidget {
         'task_list': (context) => const Task_List(),
         'auth_page': (context) => const AuthPage(),
         'createtask': (context) => const createtask(),
-        'forgotpasswordpage': (context) => const ForgotPassword(),
+        'forgotpasswordpage': (context) => ForgotPassword(),
       },
     );
   }
