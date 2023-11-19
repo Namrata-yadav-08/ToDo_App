@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:todoapp/Screens/auth_page.dart';
 
 // import 'package:intershipapp/screen/login.dart';
@@ -40,7 +41,7 @@ class WelcomeScreen extends StatelessWidget {
                   children: [
                     SizedBox(height: screenHeight * 0.1),
                     Image.asset(
-                      'assets/WhatsApp Image 2023-11-18 at 19.42.37_16844992.jpg',
+                      'assets/images/3.png',
                       height: screenHeight * 0.4,
                     ),
                   ],
@@ -66,7 +67,7 @@ class WelcomeScreen extends StatelessWidget {
                       style: TextStyle(
                         color: Color(0xff946CC3),
                         fontSize: screenWidth * 0.1,
-                        fontFamily: 'Azonix',
+                        fontFamily: 'font1',
                       ),
                     ),
                     TextSpan(
@@ -74,48 +75,52 @@ class WelcomeScreen extends StatelessWidget {
                       style: TextStyle(
                         color: Color(0xff000000),
                         fontSize: screenWidth * 0.1,
-                        fontFamily: 'Azonix',
+                        fontFamily: 'font1',
                       ),
                     ),
                   ],
                 ),
                 textAlign: TextAlign.center,
               ),
-              SizedBox(height: screenHeight * 0.07),
-              Container(
-                height: screenHeight * 0.015,
-                width: screenWidth * 0.6,
-                decoration: BoxDecoration(
-                  color: Color(0xff946CC3).withOpacity(0.79),
-                  borderRadius: BorderRadius.all(Radius.circular(50)),
-                ),
-              ),
+              // SizedBox(height: screenHeight * 0.07),
+              // Container(
+              //   height: screenHeight * 0.015,
+              //   width: screenWidth * 0.6,
+              //   decoration: BoxDecoration(
+              //     color: Color(0xff946CC3).withOpacity(0.79),
+              //     borderRadius: BorderRadius.all(Radius.circular(50)),
+              //   ),
+              // ),
               SizedBox(height: screenHeight * 0.03),
-              SizedBox(
-                height: screenHeight * 0.09,
-                width: screenWidth * 0.05,
-                child: ElevatedButton(
-                  onPressed: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(builder: (context) => AuthPage()),
-                    );
-                  },
-                  child: Text(
-                    'Next',
-                    style: TextStyle(
-                      fontSize: screenWidth * 0.05,
-                      fontWeight: FontWeight.bold,
-                      fontFamily: 'Inter',
+              // Padding(padding: EdgeInsets.all(9))
+              Container(
+                padding: EdgeInsets.all(13),
+                child: SizedBox(
+                  height: screenHeight * 0.09,
+                  width: screenWidth * 0.05,
+                  child: ElevatedButton(
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => AuthPage()),
+                      );
+                    },
+                    child: Text(
+                      'Next',
+                      style: TextStyle(
+                        fontSize: screenWidth * 0.05,
+                        fontWeight: FontWeight.bold,
+                        fontFamily: 'Inter',
+                      ),
                     ),
-                  ),
-                  style: ElevatedButton.styleFrom(
-                    primary: Color(0xff946CC3),
-                    onPrimary: Colors.white,
-                    onSurface: Colors.grey,
-                    elevation: 5,
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(10.0),
+                    style: ElevatedButton.styleFrom(
+                      primary: Color(0xff946CC3),
+                      onPrimary: Colors.white,
+                      onSurface: Colors.grey,
+                      elevation: 5,
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(10.0),
+                      ),
                     ),
                   ),
                 ),

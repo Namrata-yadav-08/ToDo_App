@@ -2,9 +2,12 @@ import 'package:date_picker_timeline/date_picker_timeline.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:todoapp/widgets/todolist.dart';
 
 class ToDoCon extends StatefulWidget {
   final String taskname;
+  // // final String taskdescription;
+  // final ValueChanged<bool?>? onChanged;
   final bool taskcomplete;
   Function(BuildContext)? deletefun;
   Function(BuildContext)? editfunc;
@@ -14,10 +17,12 @@ class ToDoCon extends StatefulWidget {
   ToDoCon(
       {super.key,
       required this.taskname,
+      // required this.taskdescription,
       required this.taskcomplete,
       required this.onchanged,
+      // required this.onChanged,
       required this.deletefun,
-      required this.editfunc});
+      required this.editfunc, required Null Function(bool? value) onChanged});
 
   @override
   State<ToDoCon> createState() => _ToDoConState();
@@ -26,6 +31,8 @@ class ToDoCon extends StatefulWidget {
 class _ToDoConState extends State<ToDoCon> with SingleTickerProviderStateMixin {
   late AnimationController _controller;
   late Animation<Offset> _offsetAnimation;
+  // bool? ischecked = false;
+  late bool ischecked;
 
   @override
   void initState() {
@@ -41,7 +48,7 @@ class _ToDoConState extends State<ToDoCon> with SingleTickerProviderStateMixin {
         end: Offset.zero,
       ),
     );
-
+    ischecked = widget.taskcomplete;
     _controller.forward();
   }
 
@@ -83,6 +90,15 @@ class _ToDoConState extends State<ToDoCon> with SingleTickerProviderStateMixin {
               children: [
                 Row(
                   children: [
+                    Checkbox(
+                        key: GlobalKey(),
+                        value: ischecked,
+                        activeColor: Colors.amber,
+                        onChanged: (value) {
+                          setState(() {
+                            ischecked = value!;
+                          });
+                        }),
                     Text(
                       widget.taskname,
                       style: TextStyle(color: Colors.white, fontSize: 20),

@@ -35,6 +35,8 @@ dependencies:
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^1.0.2
+  flutter_launcher_icons: ^0.13.1
+  provider: ^5.0.0
   flutter_slidable: ^3.0.1
   font_awesome_flutter: ^10.6.0 
   material_design_icons_flutter: ^7.0.7296
@@ -52,6 +54,11 @@ dependencies:
   firebase_remote_config: ^4.3.4
   table_calendar : ^3.0.0
   image_picker: ^1.0.4
+
+flutter_launcher_icons:
+  android: "launcher_icon"
+  ios: true
+  image_path: "assets/images/icons2.png"
 
 
 
@@ -93,10 +100,10 @@ flutter:
   # "family" key with the font family name, and a "fonts" key with a
   # list giving the asset and other descriptors for the font. For
   # example:
-  # fonts:
-  #   - family: Schyler
-  #     fonts:
-  #       - asset: fonts/Schyler-Regular.ttf
+  fonts:
+    - family: font1
+      fonts:
+        - asset: assets\Azonix.otf
   #       - asset: fonts/Schyler-Italic.ttf
   #         style: italic
   #   - family: Trajan Pro

@@ -8,6 +8,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:intl/intl.dart';
 import 'package:todoapp/Screens/createtask.dart';
 import 'package:todoapp/Screens/register.dart';
+import 'package:todoapp/widgets/TaskList.dart';
 import 'package:todoapp/widgets/text.dart';
 import 'package:todoapp/widgets/todocontainer.dart';
 import 'package:todoapp/widgets/todolist.dart';
@@ -21,16 +22,12 @@ class WeekTask extends StatefulWidget {
 
 class _WeekTaskState extends State<WeekTask> {
   DateTime selecteddate = DateTime.now();
-  // List todolist = ["Makjjjjjjjjevg", "jghhhhhhhhj", "kjhgfd", "kjhgfddfghjk"];
 
   // void addtask() {
   //   setState(() {
   //     // String result = createtask() as String;
   //     todolist.add(result);
   //   });
-
-  //   // final _myBox = Hive.box('mybox');
-
   //   // ToDoDataBase db = ToDoDataBase();
   // }
 
@@ -108,7 +105,12 @@ class _WeekTaskState extends State<WeekTask> {
   //   });
   // }
 
-  // void editTask(int index) {
+  // List getTasksForDate(DateTime date) {
+  //   // Filter tasks based on the selected date
+  //   return todolist.where((task) => task.date.isAtSameMomentAs(date)).toList();
+  // }
+
+  // void editTasks(int index) {
   //   TextEditingController taskController =
   //       TextEditingController(text: todolist[index]);
 
@@ -310,15 +312,17 @@ class _WeekTaskState extends State<WeekTask> {
               child: ListView.builder(
                   itemCount: todolist.length,
                   itemBuilder: (context, index) {
+                    // ToDo task = getTasksForDate(selecteddate)[index];
                     return ToDoCon(
                       taskname: todolist[index],
-                      taskcomplete: false,
-                      onchanged: (bool? value) {},
+                    taskcomplete: false,
+                      onChanged: (bool? value) {},
                       deletefun: (context) => deleteTask(index),
                       editfunc: (context) {
                         edittask(index);
                         deleteTask(index);
-                      },
+                      }, onchanged: (bool? v) {  },
+                      // taskdescription: todolist[index],
 
                       // taskname: todolist[index][0],
                       // tasknompleted: todolist[index][1],
@@ -338,6 +342,26 @@ class _WeekTaskState extends State<WeekTask> {
           ],
         ),
       ),
+      // floatingActionButton: FloatingActionButton(
+      //   onPressed: () async {
+      //     // Navigate to the create task screen
+      //     final result = await Navigator.push(
+      //       context,
+      //       MaterialPageRoute(builder: (context) => const createtask()),
+      //     );
+
+      //     // Check if the result is not null (user added a task)
+      //     if (result != null) {
+      //       setState(() {
+      //         todolist.add(result);
+      //       });
+
+      //       // Add the task to the list or update the UI as needed
+      //       // You can update the UI using setState if necessary
+      //     }
+      //   },
+      //   child: const Icon(Icons.add),
+      // ),
     );
   }
 

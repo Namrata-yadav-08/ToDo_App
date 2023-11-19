@@ -429,12 +429,13 @@ class _HomeState extends State<Home> {
                           return ToDoCon(
                             taskname: todolist[index],
                             taskcomplete: true,
-                            onchanged: (value) => checkBoxChanged(value, index),
+                            onChanged: (value) {},
                             deletefun: (context) => deleteTask(index),
                             editfunc: (context) {
                               edittask(index);
                               deleteTask(index);
                             },
+                            onchanged: (bool? d) {},
 
                             // taskname: todolist[index][0],
                             // tasknompleted: todolist[index][1],
