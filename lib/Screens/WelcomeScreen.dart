@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:todoapp/Screens/auth_page.dart';
 
 // import 'package:intershipapp/screen/login.dart';
@@ -41,7 +42,7 @@ class WelcomeScreen extends StatelessWidget {
                   children: [
                     SizedBox(height: screenHeight * 0.1),
                     Image.asset(
-                      '',
+                      'assets/images/3.png',
                       height: screenHeight * 0.4,
                     ),
                   ],
@@ -67,7 +68,7 @@ class WelcomeScreen extends StatelessWidget {
                       style: TextStyle(
                         color: Color.fromARGB(255, 245, 69, 101),
                         fontSize: screenWidth * 0.1,
-                        fontFamily: 'Azonix',
+                        fontFamily: 'font1',
                       ),
                     ),
                     TextSpan(
@@ -75,7 +76,7 @@ class WelcomeScreen extends StatelessWidget {
                       style: TextStyle(
                         color: Color(0xff000000),
                         fontSize: screenWidth * 0.1,
-                        fontFamily: 'Azonix',
+                        fontFamily: 'font1',
                       ),
                     ),
                   ],
@@ -92,31 +93,35 @@ class WelcomeScreen extends StatelessWidget {
                 ),
               ),
               SizedBox(height: screenHeight * 0.03),
-              SizedBox(
-                height: screenHeight * 0.09,
-                width: screenWidth * 0.05,
-                child: ElevatedButton(
-                  onPressed: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(builder: (context) => AuthPage()),
-                    );
-                  },
-                  child: Text(
-                    'Next',
-                    style: TextStyle(
-                      fontSize: screenWidth * 0.05,
-                      fontWeight: FontWeight.bold,
-                      fontFamily: 'Inter',
+              // Padding(padding: EdgeInsets.all(9))
+              Container(
+                padding: EdgeInsets.all(13),
+                child: SizedBox(
+                  height: screenHeight * 0.09,
+                  width: screenWidth * 0.05,
+                  child: ElevatedButton(
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => AuthPage()),
+                      );
+                    },
+                    child: Text(
+                      'Next',
+                      style: TextStyle(
+                        fontSize: screenWidth * 0.05,
+                        fontWeight: FontWeight.bold,
+                        fontFamily: 'Inter',
+                      ),
                     ),
-                  ),
-                  style: ElevatedButton.styleFrom(
-                    primary: Color.fromARGB(255, 245, 69, 101),
-                    onPrimary: Colors.white,
-                    onSurface: Colors.grey,
-                    elevation: 5,
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(10.0),
+                    style: ElevatedButton.styleFrom(
+                      primary: Color.fromARGB(255, 245, 69, 101),
+                      onPrimary: Colors.white,
+                      onSurface: Colors.grey,
+                      elevation: 5,
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(10.0),
+                      ),
                     ),
                   ),
                 ),
