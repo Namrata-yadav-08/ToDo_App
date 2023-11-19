@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 
 import 'package:todoapp/Screens/SplashScreen.dart';
 import 'package:todoapp/Screens/WeekTask.dart';
+import 'package:todoapp/Screens/about_us.dart';
 
 import 'package:todoapp/Screens/auth_page.dart';
 
@@ -35,7 +36,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      initialRoute: 'splashscreen',
+      initialRoute: 'main_screen',
       routes: {
         'main_screen': (context) => const Main_Screen(),
         'home': (context) => const Home(),
@@ -53,6 +54,7 @@ class MyApp extends StatelessWidget {
         'auth_page': (context) => const AuthPage(),
         'createtask': (context) => const createtask(),
         'forgotpasswordpage': (context) => ForgotPassword(),
+        'about_us': (context) => AboutUsPage(),
       },
     );
   }

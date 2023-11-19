@@ -5,6 +5,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'dart:io';
 import 'package:image_picker/image_picker.dart';
 import 'user_controller.dart';
+import 'about_us.dart';
 
 class Profile extends StatefulWidget {
   const Profile({super.key});
@@ -223,33 +224,107 @@ class _ProfileState extends State<Profile> {
               Container(),
             ],
           ),
-          // Text('settings'),
-          // Container(
-          //   width: 90,
-          //   height: 30,
-          //   color: Colors.white,
-          // ),
-          // Container(
-          //   width: 90,
-          //   height: 30,
-          //   color: Colors.white,
-          // ),
-          // Container(
-          //   width: 90,
-          //   height: 30,
-          //   color: Colors.white,
-          // ),
-          // Text('settings'),
-          // Container(
-          //   width: 90,
-          //   height: 30,
-          //   color: Colors.white,
-          // ),
-          // Container(
-          //   width: _width * 0.90,
-          //   height: 30,
-          //   color: Colors.white,
-          // ),
+          Padding(
+            padding: const EdgeInsets.only(left: 24),
+            child: Text(
+              'Settings',
+              textAlign: TextAlign.start,
+              style: GoogleFonts.inter(
+                  fontSize: 12,
+                  fontWeight: FontWeight.w500,
+                  color: Color.fromARGB(178, 0, 0, 0)),
+            ),
+          ),
+          const SizedBox(
+            height: 20,
+          ),
+          Padding(
+            padding: const EdgeInsets.only(left: 24),
+            child: Container(
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(8),
+                color: Color.fromARGB(255, 252, 252, 254),
+              ),
+              width: _width * 0.90,
+              height: 48,
+              child: Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Row(
+                  children: [
+                    const Icon(
+                      Icons.access_time,
+                      size: 20,
+                      color: Color.fromARGB(255, 255, 100, 125),
+                    ),
+                    const SizedBox(
+                      width: 10,
+                    ),
+                    Text(
+                      "Reminders",
+                      style: GoogleFonts.inter(
+                          color: Colors.black,
+                          fontSize: 15,
+                          fontWeight: FontWeight.w500),
+                    ),
+                    Spacer(),
+                    IconButton(
+                        onPressed: () {},
+                        icon: Icon(
+                          Icons.arrow_forward_ios_rounded,
+                        )),
+                  ],
+                ),
+              ),
+            ),
+          ),
+          const SizedBox(
+            height: 20,
+          ),
+          Padding(
+            padding: const EdgeInsets.only(left: 24),
+            child: Container(
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(8),
+                color: Color.fromARGB(255, 252, 252, 254),
+              ),
+              width: _width * 0.90,
+              height: 48,
+              child: Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Row(
+                  children: [
+                    const Icon(
+                      Icons.notifications,
+                      size: 20,
+                      color: Color.fromARGB(255, 255, 100, 125),
+                    ),
+                    const SizedBox(
+                      width: 10,
+                    ),
+                    Text(
+                      "Notification",
+                      style: GoogleFonts.inter(
+                          color: Colors.black,
+                          fontSize: 15,
+                          fontWeight: FontWeight.w500),
+                    ),
+                    Spacer(),
+                    // Padding(
+                    //   padding: EdgeInsets.only(left: _width * 0.32),
+                    //   child:
+                    IconButton(
+                        onPressed: () {},
+                        icon: Icon(
+                          Icons.arrow_forward_ios_rounded,
+                        )),
+                  ],
+                ),
+              ),
+            ),
+          ),
+          const SizedBox(
+            height: 20,
+          ),
           Padding(
             padding: const EdgeInsets.only(left: 24),
             child: Text(
@@ -401,6 +476,64 @@ class _ProfileState extends State<Profile> {
           ),
           Padding(
             padding: const EdgeInsets.only(left: 24),
+            child: Text(
+              'Up ToDo',
+              textAlign: TextAlign.start,
+              style: GoogleFonts.inter(
+                  fontSize: 12,
+                  fontWeight: FontWeight.w500,
+                  color: Color.fromARGB(178, 0, 0, 0)),
+            ),
+          ),
+          const SizedBox(
+            height: 20,
+          ),
+          Padding(
+            padding: const EdgeInsets.only(left: 24),
+            child: Container(
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(8),
+                color: Color.fromARGB(255, 252, 252, 254),
+              ),
+              width: _width * 0.90,
+              height: 48,
+              child: Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Row(
+                  children: [
+                    const Icon(
+                      Icons.info_outline_rounded,
+                      size: 20,
+                      color: Color.fromARGB(255, 255, 100, 125),
+                    ),
+                    const SizedBox(
+                      width: 10,
+                    ),
+                    Text(
+                      "About Us",
+                      style: GoogleFonts.inter(
+                          color: Colors.black,
+                          fontSize: 15,
+                          fontWeight: FontWeight.w500),
+                    ),
+                    Spacer(),
+                    IconButton(
+                        onPressed: () {
+                          Navigator.pushNamed(context, 'about_us');
+                        },
+                        icon: Icon(
+                          Icons.arrow_forward_ios_rounded,
+                        )),
+                  ],
+                ),
+              ),
+            ),
+          ),
+          const SizedBox(
+            height: 20,
+          ),
+          Padding(
+            padding: const EdgeInsets.only(left: 24),
             child: Container(
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(8),
@@ -483,6 +616,9 @@ class _ProfileState extends State<Profile> {
                 ),
               ),
             ),
+          ),
+          const SizedBox(
+            height: 30,
           ),
         ],
       ))),
