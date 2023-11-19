@@ -73,8 +73,8 @@ class _ToDoConState extends State<ToDoCon> with SingleTickerProviderStateMixin {
                     begin: Alignment.topCenter,
                     end: AlignmentDirectional.bottomCenter,
                     colors: [
-                      Color.fromARGB(255, 254, 165, 147),
-                      Color.fromARGB(255, 255, 95, 123)
+                      Color.fromARGB(255, 250, 140, 119),
+                      Color.fromARGB(255, 243, 48, 96),
                     ]),
                 borderRadius: BorderRadius.circular(13)),
             padding: EdgeInsets.all(9),
