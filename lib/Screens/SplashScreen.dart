@@ -34,7 +34,7 @@ class _SplashScreenState extends State<SplashScreen> {
                     TextSpan(
                       text: "TO",
                       style: TextStyle(
-                          color: Color(0xff946CC3),
+                          color: Color.fromARGB(255, 245, 69, 101),
                           fontSize: 42,
                           fontFamily: 'Azonix'),
                     ),

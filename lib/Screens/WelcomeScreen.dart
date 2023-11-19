@@ -28,7 +28,8 @@ class WelcomeScreen extends StatelessWidget {
                   ),
                   boxShadow: [
                     BoxShadow(
-                      color: Color(0xff946CC3).withOpacity(0.45),
+                      color:
+                          Color.fromARGB(255, 245, 69, 101).withOpacity(0.45),
                       spreadRadius: 3,
                       blurRadius: 5,
                       offset: Offset(0, 4),
@@ -64,7 +65,7 @@ class WelcomeScreen extends StatelessWidget {
                     TextSpan(
                       text: "TO",
                       style: TextStyle(
-                        color: Color(0xff946CC3),
+                        color: Color.fromARGB(255, 245, 69, 101),
                         fontSize: screenWidth * 0.1,
                         fontFamily: 'Azonix',
                       ),
@@ -86,7 +87,7 @@ class WelcomeScreen extends StatelessWidget {
                 height: screenHeight * 0.015,
                 width: screenWidth * 0.6,
                 decoration: BoxDecoration(
-                  color: Color(0xff946CC3).withOpacity(0.79),
+                  color: Color.fromARGB(255, 245, 69, 101).withOpacity(0.79),
                   borderRadius: BorderRadius.all(Radius.circular(50)),
                 ),
               ),
@@ -110,7 +111,7 @@ class WelcomeScreen extends StatelessWidget {
                     ),
                   ),
                   style: ElevatedButton.styleFrom(
-                    primary: Color(0xff946CC3),
+                    primary: Color.fromARGB(255, 245, 69, 101),
                     onPrimary: Colors.white,
                     onSurface: Colors.grey,
                     elevation: 5,
