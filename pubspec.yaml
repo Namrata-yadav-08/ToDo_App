@@ -54,6 +54,7 @@ dependencies:
   firebase_remote_config: ^4.3.4
   table_calendar : ^3.0.0
   image_picker: ^1.0.4
+  google_sign_in: ^6.1.6
 
 flutter_launcher_icons:
   android: "launcher_icon"

@@ -16,6 +16,9 @@ class Const extends StatelessWidget {
                         onTap: () {},
                       )));
         },
-        child: const Text("Register"));
+        child: const Text(
+          "Register",
+          style: TextStyle(color: Color.fromARGB(255, 245, 69, 101)),
+        ));
   }
 }

@@ -1,9 +1,10 @@
 // ignore_for_file: non_constant_identifier_names
 
 import 'package:flutter/material.dart';
-import 'package:get/get_navigation/src/root/get_material_app.dart';
+
 import 'package:todoapp/Screens/SplashScreen.dart';
 import 'package:todoapp/Screens/WeekTask.dart';
+import 'package:todoapp/Screens/about_us.dart';
 
 import 'package:todoapp/Screens/auth_page.dart';
 
@@ -17,7 +18,6 @@ import 'package:todoapp/Screens/main_screen.dart';
 import 'package:todoapp/Screens/profile.dart';
 import 'package:todoapp/Screens/register.dart';
 import 'package:todoapp/Screens/task_list.dart';
-import 'package:todoapp/widgets/const.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'firebase_options.dart';
 
@@ -36,7 +36,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      initialRoute: 'main_screen',
+      initialRoute: 'splashscreen',
       routes: {
         'main_screen': (context) => const Main_Screen(),
         'home': (context) => const Home(),
@@ -53,7 +53,8 @@ class MyApp extends StatelessWidget {
         'task_list': (context) => const Task_List(),
         'auth_page': (context) => const AuthPage(),
         'createtask': (context) => const createtask(),
-        'forgotpasswordpage': (context) => const ForgotPassword(),
+        'forgotpasswordpage': (context) => ForgotPassword(),
+        'about_us': (context) => AboutUsPage(),
       },
     );
   }

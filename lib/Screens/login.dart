@@ -66,18 +66,33 @@ class _LoginState extends State<Login> {
     showDialog(
       context: context,
       builder: (context) {
-        return AlertDialog(
-          backgroundColor: Color.fromARGB(255, 245, 240, 255),
-          title: Center(
-              child: Text(message,
-                  style: GoogleFonts.montserrat(
-                    textStyle: const TextStyle(
-                      color: Color.fromARGB(255, 104, 29, 255),
-                      fontSize: 25,
-                      fontWeight: FontWeight.w600,
-                    ),
-                  ))),
-        );
+        return
+            //  AlertDialog(
+            //     title: Text('Error'),
+            //     content: Text('Failed to send reset email. Please try again.'),
+            //     actions: <Widget>[
+            //       TextButton(
+            //         onPressed: () {
+            //           Navigator.of(context).pop();
+            //         },
+            // child: Text('OK',
+            //     style: TextStyle(color: Color.fromARGB(255, 245, 69, 101))),
+            //       ),
+            //     ],
+            //   );
+            AlertDialog(
+                backgroundColor: Color.fromARGB(255, 245, 240, 255),
+                title: Text('Error'),
+                content: Text(message),
+                actions: <Widget>[
+              TextButton(
+                onPressed: () {
+                  Navigator.of(context).pop();
+                },
+                child: Text('OK',
+                    style: TextStyle(color: Color.fromARGB(255, 245, 69, 101))),
+              )
+            ]);
       },
     );
   }
@@ -314,7 +329,8 @@ class _LoginState extends State<Login> {
             style: ElevatedButton.styleFrom(
               // shape: const StadiumBorder(),
               shape: const ContinuousRectangleBorder(),
-              backgroundColor: const Color.fromARGB(255, 255, 100, 125),
+              // backgroundColor: const Color.fromARGB(255, 255, 100, 125),
+              backgroundColor: Color.fromARGB(255, 245, 69, 101),
 
               padding: const EdgeInsets.symmetric(vertical: 16),
             ),
@@ -336,7 +352,7 @@ class _LoginState extends State<Login> {
         child: const CustomText(
           text: "Forget Password ?",
           fontStyle: null,
-          color: Colors.red,
+          color: Color.fromARGB(255, 245, 69, 101),
           fontSize: 15,
         ));
   }

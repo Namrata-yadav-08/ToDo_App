@@ -27,14 +27,17 @@ class _SplashScreenState extends State<SplashScreen> {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              const SizedBox(height: 7),
+              Container(
+                child: Image(image: AssetImage('assets/images/icons2.png')),
+              ),
+              SizedBox(height: 7),
               RichText(
                 text: const TextSpan(
                   children: [
                     TextSpan(
                       text: "TO",
                       style: TextStyle(
-                          color: Color(0xff946CC3),
+                          color: Color.fromARGB(255, 245, 69, 101),
                           fontSize: 42,
                           fontFamily: 'Azonix'),
                     ),

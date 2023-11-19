@@ -22,7 +22,8 @@ class ToDoCon extends StatefulWidget {
       required this.onchanged,
       // required this.onChanged,
       required this.deletefun,
-      required this.editfunc, required Null Function(bool? value) onChanged});
+      required this.editfunc,
+      required Null Function(bool? value) onChanged});
 
   @override
   State<ToDoCon> createState() => _ToDoConState();
@@ -80,8 +81,8 @@ class _ToDoConState extends State<ToDoCon> with SingleTickerProviderStateMixin {
                     begin: Alignment.topCenter,
                     end: AlignmentDirectional.bottomCenter,
                     colors: [
-                      Color.fromRGBO(254, 162, 146, 1),
-                      Color.fromRGBO(255, 100, 125, 1)
+                      Color.fromARGB(255, 250, 140, 119),
+                      Color.fromARGB(255, 243, 48, 96),
                     ]),
                 borderRadius: BorderRadius.circular(13)),
             padding: EdgeInsets.all(9),
@@ -90,15 +91,15 @@ class _ToDoConState extends State<ToDoCon> with SingleTickerProviderStateMixin {
               children: [
                 Row(
                   children: [
-                    Checkbox(
-                        key: GlobalKey(),
-                        value: ischecked,
-                        activeColor: Colors.amber,
-                        onChanged: (value) {
-                          setState(() {
-                            ischecked = value!;
-                          });
-                        }),
+                    // Checkbox(
+                    //     key: GlobalKey(),
+                    //     value: ischecked,
+                    //     activeColor: Colors.amber,
+                    //     onChanged: (value) {
+                    //       setState(() {
+                    //         ischecked = value!;
+                    //       });
+                    //     }),
                     Text(
                       widget.taskname,
                       style: TextStyle(color: Colors.white, fontSize: 20),

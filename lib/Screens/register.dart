@@ -36,7 +36,8 @@ class _RegisterState extends State<Register> {
     );
     try {
       if (password.text == confirmpass.text) {
-        await FirebaseAuth.instance.createUserWithEmailAndPassword(
+        final userCredential =
+            await FirebaseAuth.instance.createUserWithEmailAndPassword(
           email: emailtext.text,
           password: password.text,
         );
@@ -69,17 +70,18 @@ class _RegisterState extends State<Register> {
       context: context,
       builder: (context) {
         return AlertDialog(
-          backgroundColor: Color.fromARGB(255, 245, 240, 255),
-          title: Center(
-              child: Text(message,
-                  style: GoogleFonts.montserrat(
-                    textStyle: const TextStyle(
-                      color: Color.fromARGB(255, 104, 29, 255),
-                      fontSize: 25,
-                      fontWeight: FontWeight.w600,
-                    ),
-                  ))),
-        );
+            backgroundColor: Color.fromARGB(255, 245, 240, 255),
+            title: Text('Error'),
+            content: Text(message),
+            actions: <Widget>[
+              TextButton(
+                onPressed: () {
+                  Navigator.of(context).pop();
+                },
+                child: Text('OK',
+                    style: TextStyle(color: Color.fromARGB(255, 245, 69, 101))),
+              )
+            ]);
       },
     );
   }
@@ -163,7 +165,10 @@ class _RegisterState extends State<Register> {
                                 )));
                     // Navigator.of(context).pop();
                   },
-                  child: const Text("OK")),
+                  child: const Text(
+                    "OK",
+                    style: TextStyle(color: Color.fromARGB(255, 245, 69, 101)),
+                  )),
             ],
           );
         });
@@ -177,7 +182,7 @@ class _RegisterState extends State<Register> {
         CustomText(
           text: "Register",
           fontStyle: null,
-          color: Colors.black,
+          color: Colors.white,
           fontSize: 40,
           fontweigth: FontWeight.bold,
         )
