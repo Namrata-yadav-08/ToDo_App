@@ -23,50 +23,79 @@ class ToDoCon extends StatefulWidget {
   State<ToDoCon> createState() => _ToDoConState();
 }
 
-class _ToDoConState extends State<ToDoCon> {
+class _ToDoConState extends State<ToDoCon> with SingleTickerProviderStateMixin {
+  late AnimationController _controller;
+  late Animation<Offset> _offsetAnimation;
+
+  @override
+  void initState() {
+    super.initState();
+    _controller = AnimationController(
+      duration: const Duration(milliseconds: 500),
+      vsync: this,
+    );
+
+    _offsetAnimation = _controller.drive(
+      Tween<Offset>(
+        begin: const Offset(1, 0),
+        end: Offset.zero,
+      ),
+    );
+
+    _controller.forward();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.only(top: 30, left: 20, right: 20),
-      child: Slidable(
-        endActionPane: ActionPane(
-          motion: const StretchMotion(),
-          children: [
-            SlidableAction(
-              onPressed: widget.deletefun,
-              icon: FontAwesomeIcons.deleteLeft,
-            ),
-            // SlidableAction(
-            //   onPressed: donefun,
-            //   icon: Icons.done,
-            // ),
-            SlidableAction(
-              onPressed: widget.editfunc,
-              icon: Icons.edit,
-            )
-          ],
-        ),
-        child: Container(
-          width: 700,
-          height: 100,
-          decoration: BoxDecoration(
-              gradient: const LinearGradient(
-                  begin: Alignment.topCenter,
-                  end: AlignmentDirectional.bottomCenter,
-                  colors: [
-                    Color.fromRGBO(254, 162, 146, 1),
-                    Color.fromRGBO(255, 100, 125, 1)
-                  ]),
-              borderRadius: BorderRadius.circular(13)),
-          padding: EdgeInsets.all(9),
-          child: Row(
+      child: SlideTransition(
+        position: _offsetAnimation,
+        child: Slidable(
+          endActionPane: ActionPane(
+            motion: const StretchMotion(),
             children: [
-              Text(
-                widget.taskname,
-                style: TextStyle(color: Colors.white, fontSize: 20),
+              SlidableAction(
+                onPressed: widget.deletefun,
+                icon: FontAwesomeIcons.deleteLeft,
               ),
-              // Checkbox(value: taskcomplete, onChanged:onchanged )
+              SlidableAction(
+                onPressed: widget.editfunc,
+                icon: Icons.edit,
+              )
             ],
+          ),
+          child: Container(
+            width: 700,
+            height: 100,
+            decoration: BoxDecoration(
+                gradient: const LinearGradient(
+                    begin: Alignment.topCenter,
+                    end: AlignmentDirectional.bottomCenter,
+                    colors: [
+                      Color.fromRGBO(254, 162, 146, 1),
+                      Color.fromRGBO(255, 100, 125, 1)
+                    ]),
+                borderRadius: BorderRadius.circular(13)),
+            padding: EdgeInsets.all(9),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Row(
+                  children: [
+                    Text(
+                      widget.taskname,
+                      style: TextStyle(color: Colors.white, fontSize: 20),
+                    ),
+                    Spacer(),
+                    Icon(
+                      FontAwesomeIcons.arrowLeft,
+                      color: Colors.white,
+                    )
+                  ],
+                ),
+              ],
+            ),
           ),
         ),
       ),

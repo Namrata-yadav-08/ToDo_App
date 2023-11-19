@@ -2,6 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:get/get_navigation/src/root/get_material_app.dart';
+import 'package:todoapp/Screens/SplashScreen.dart';
 import 'package:todoapp/Screens/WeekTask.dart';
 
 import 'package:todoapp/Screens/auth_page.dart';
@@ -39,6 +40,7 @@ class MyApp extends StatelessWidget {
       routes: {
         'main_screen': (context) => const Main_Screen(),
         'home': (context) => const Home(),
+        'splashscreen': (context) => const SplashScreen(),
         'profile': (context) => const Profile(),
         'login': (context) => Login(
               onTap: () {},
