@@ -93,6 +93,23 @@ class _RegisterState extends State<Register> {
     // }
     return Scaffold(
       backgroundColor: Colors.white,
+      appBar: AppBar(
+          automaticallyImplyLeading: false,
+          toolbarHeight: 77,
+          elevation: 0,
+          backgroundColor: Colors.transparent,
+          title: Center(
+            child: Padding(
+              padding: const EdgeInsets.only(top: 24),
+              child: Text(
+                "Register",
+                style: GoogleFonts.inter(
+                    color: Colors.black,
+                    fontSize: 25,
+                    fontWeight: FontWeight.w700),
+              ),
+            ),
+          )),
       body: ListView(children: [
         Container(
           // margin: EdgeInsets.all(24),
@@ -102,7 +119,7 @@ class _RegisterState extends State<Register> {
               const SizedBox(
                 height: 20,
               ),
-              _header(context),
+              //_header(context),
               // const SizedBox(
               //   height: 20,
               // ),
@@ -182,7 +199,7 @@ class _RegisterState extends State<Register> {
         CustomText(
           text: "Register",
           fontStyle: null,
-          color: Colors.white,
+          color: Color.fromARGB(255, 245, 69, 101),
           fontSize: 40,
           fontweigth: FontWeight.bold,
         )
@@ -328,7 +345,7 @@ class _RegisterState extends State<Register> {
             ),
             child: const Text(
               "Register",
-              style: TextStyle(fontSize: 20, color: Colors.black),
+              style: TextStyle(fontSize: 20, color: Colors.white),
             ),
           ),
         ),
