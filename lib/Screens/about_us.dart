@@ -44,10 +44,10 @@ class AboutUsPage extends StatelessWidget {
             ),
             SizedBox(height: 15),
             Text(
-              'Developers: Daiwik saxena,'
-              ' Namrata Yadav,'
-              'Vidhi Gupta,'
-              'Designer: Nitish Kumar',
+              'Developers: Daiwik saxena \n'
+              ' Namrata Yadav, \n'
+              'Vidhi Gupta,\n'
+              'Designer: Nitish Kumar \n',
               style: TextStyle(fontSize: 16),
             ),
             SizedBox(height: 20),
