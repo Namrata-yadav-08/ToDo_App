@@ -176,61 +176,61 @@ class createtaskState extends State<createtask> {
                 //         child: Row(
                 //             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 //             children: [
-                              // BuildCategory("Work"),
-                              // BuildCategory("Personal"),
-                              // BuildCategory("Office"),
-                              // BuildCategory("Shopping"),
-                              // BuildCategory("Others"),
+                // BuildCategory("Work"),
+                // BuildCategory("Personal"),
+                // BuildCategory("Office"),
+                // BuildCategory("Shopping"),
+                // BuildCategory("Others"),
 
-                              //   Container(
-                              //       margin: EdgeInsets.only(top: 25),
-                              //       decoration: BoxDecoration(
-                              //           gradient: LinearGradient(colors: [
-                              //         Color.fromARGB(1, 254, 152, 142),
-                              //         Color.fromARGB(1, 255, 100, 125)
-                              //       ])),
-                              //       child: Text(
-                              //         'LEARNING',
-                              //         style: TextStyle(fontSize: 20, fontWeight: FontWeight.w500),
-                              //       )),
-                              //   Container(
-                              //       margin: EdgeInsets.only(top: 25),
-                              //       decoration: BoxDecoration(
-                              //           gradient: LinearGradient(colors: [
-                              //         Color.fromARGB(1, 254, 152, 142),
-                              //         Color.fromARGB(1, 255, 100, 125)
-                              //       ])),
-                              //       child: Text(
-                              //         'MEETING',
-                              //         style: TextStyle(fontSize: 20, fontWeight: FontWeight.w500),
-                              //       )),
-                              // ]),
-                              // Align(
-                              //   alignment: FractionalOffset.center,
-                              //   child: ElevatedButton(
-                              //     child: Container(
-                              //         margin: const EdgeInsets.only(top: 30),
-                              //         decoration: const BoxDecoration(
-                              //             boxShadow: [],
-                              //             gradient: LinearGradient(
-                              //               begin: Alignment.topCenter,
-                              //               end: Alignment.bottomCenter,
-                              //               colors: [
-                              //                 Color.fromRGBO(254, 152, 142, 1),
-                              //                 Color.fromRGBO(255, 100, 125, 1)
-                              //               ],
-                              //             )),
-                              //         child: const Text(
-                              //           'CREATE TASK',
-                              //           textAlign: TextAlign.center,
-                              //           style: TextStyle(
-                              //             fontSize: 28,
-                              //             fontWeight: FontWeight.w500,
-                              //           ),
-                              //         )),
-                              //     onPressed: () {},
-                              //   ),
-                              // ),
+                //   Container(
+                //       margin: EdgeInsets.only(top: 25),
+                //       decoration: BoxDecoration(
+                //           gradient: LinearGradient(colors: [
+                //         Color.fromARGB(1, 254, 152, 142),
+                //         Color.fromARGB(1, 255, 100, 125)
+                //       ])),
+                //       child: Text(
+                //         'LEARNING',
+                //         style: TextStyle(fontSize: 20, fontWeight: FontWeight.w500),
+                //       )),
+                //   Container(
+                //       margin: EdgeInsets.only(top: 25),
+                //       decoration: BoxDecoration(
+                //           gradient: LinearGradient(colors: [
+                //         Color.fromARGB(1, 254, 152, 142),
+                //         Color.fromARGB(1, 255, 100, 125)
+                //       ])),
+                //       child: Text(
+                //         'MEETING',
+                //         style: TextStyle(fontSize: 20, fontWeight: FontWeight.w500),
+                //       )),
+                // ]),
+                // Align(
+                //   alignment: FractionalOffset.center,
+                //   child: ElevatedButton(
+                //     child: Container(
+                //         margin: const EdgeInsets.only(top: 30),
+                //         decoration: const BoxDecoration(
+                //             boxShadow: [],
+                //             gradient: LinearGradient(
+                //               begin: Alignment.topCenter,
+                //               end: Alignment.bottomCenter,
+                //               colors: [
+                //                 Color.fromRGBO(254, 152, 142, 1),
+                //                 Color.fromRGBO(255, 100, 125, 1)
+                //               ],
+                //             )),
+                //         child: const Text(
+                //           'CREATE TASK',
+                //           textAlign: TextAlign.center,
+                //           style: TextStyle(
+                //             fontSize: 28,
+                //             fontWeight: FontWeight.w500,
+                //           ),
+                //         )),
+                //     onPressed: () {},
+                //   ),
+                // ),
                 //             ]),
                 //       )
                 //     ),
@@ -243,8 +243,8 @@ class createtaskState extends State<createtask> {
                       List data = [taskname.text, description.text];
                       addTask(taskname.text);
                       // return taskname.text,
-                                         
-                       Navigator.pop(context, taskname.text);
+
+                      Navigator.pop(context, taskname.text);
                       Navigator.pushNamed(context, "main_screen");
                       // addTask(taskname.text);
                       // Navigator.pushNamed(context, 'WeekTask');
