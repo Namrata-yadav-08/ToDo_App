@@ -10,6 +10,7 @@ import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:intl/intl.dart';
 import 'package:todoapp/Screens/createtask.dart';
+import 'package:todoapp/Screens/edit_task.dart';
 import 'package:todoapp/Screens/register.dart';
 import 'package:todoapp/widgets/TaskList.dart';
 import 'package:todoapp/widgets/text.dart';
@@ -61,7 +62,7 @@ class _WeekTaskState extends State<WeekTask> {
     // Navigate to the AddTaskScreen and wait for a result
     final result = await Navigator.push(
       context,
-      MaterialPageRoute(builder: (context) => createtask()),
+      MaterialPageRoute(builder: (context) => Edit_Task()),
     );
 
     // Check if the result is not null (user added a task)
@@ -125,55 +126,6 @@ class _WeekTaskState extends State<WeekTask> {
     // updateDataBase();
   }
 
-  // void checkbox(bool? value, int index) {
-  //   setState(() {
-  //     todolist[index][1] = value ?? false;
-  //   });
-  // }
-
-  // List getTasksForDate(DateTime date) {
-  //   // Filter tasks based on the selected date
-  //   return todolist.where((task) => task.date.isAtSameMomentAs(date)).toList();
-  // }
-
-  // void editTasks(int index) {
-  //   TextEditingController taskController =
-  //       TextEditingController(text: todolist[index]);
-
-  //   showDialog(
-  //     context: context,
-  //     builder: (context) {
-  //       return AlertDialog(
-  //         title: Text('Edit Task'),
-  //         content: TextField(
-  //           controller: taskController,
-  //           decoration: InputDecoration(labelText: 'Task Name'),
-  //         ),
-  //         actions: [
-  //           ElevatedButton(
-  //             onPressed: () {
-  //               Navigator.of(context).pop();
-  //             },
-  //             child: Text('Cancel'),
-  //           ),
-  //           ElevatedButton(
-  //             onPressed: () {
-  //               editTaskName(index, taskController.text);
-  //               Navigator.of(context).pop();
-  //             },
-  //             child: Text('Save'),
-  //           ),
-  //         ],
-  //       );
-  //     },
-  //   );
-  // }
-
-  // void editTaskName(int index, String newTaskName) {
-  //   setState(() {
-  //     todolist[index] = newTaskName;
-  //   });
-  // }
   DateTime _currentMonth = DateTime.now();
 
   void _previousMonth() {
